@@ -1,0 +1,32 @@
+{
+  "name": "pulseai",
+  "version": "1.0.0",
+  "description": "Pulse AI - AI agent that hunts for product feedback online",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "scout": "node src/scout.js",
+    "scrape:reddit": "node src/scrapers/redditScraper.js",
+    "scrape:twitter": "node src/scrapers/twitterScraper.js",
+    "analyze": "node src/analysis/classifier.js",
+    "synthesize": "node src/analysis/synthesizer.js",
+    "pipeline": "node src/pipeline.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ai",
+    "feedback",
+    "product-analytics",
+    "langchain"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@langchain/core": "^1.1.8",
+    "@langchain/openai": "^1.2.0",
+    "@supabase/supabase-js": "^2.89.0",
+    "apify-client": "^2.21.0",
+    "dotenv": "^17.2.3",
+    "zod": "^4.2.1"
+  }
+}

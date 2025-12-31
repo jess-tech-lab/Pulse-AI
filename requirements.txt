@@ -1,0 +1,66 @@
+# Pulse AI - System Requirements and Dependencies
+
+# ================================
+# SYSTEM REQUIREMENTS
+# ================================
+# Node.js >= 18.0.0
+# npm >= 9.0.0
+
+# ================================
+# BACKEND DEPENDENCIES (npm)
+# ================================
+# @langchain/core@^1.1.8        - LangChain core library
+# @langchain/openai@^1.2.0      - OpenAI integration for LangChain
+# @supabase/supabase-js@^2.89.0 - Supabase client
+# dotenv@^17.2.3                - Environment variable management
+# zod@^4.2.1                    - Runtime type validation
+
+# ================================
+# FRONTEND DEPENDENCIES (npm)
+# ================================
+# react@^19.0.0                 - React UI library
+# react-dom@^19.0.0             - React DOM renderer
+# framer-motion@^11.0.0         - Animation library
+# lucide-react@^0.400.0         - Icon library
+# tailwindcss@^4.0.0            - Utility-first CSS
+# jspdf@^2.5.2                  - PDF generation
+# typescript@^5.6.0             - TypeScript compiler
+
+# ================================
+# API KEYS REQUIRED
+# ================================
+# OPENAI_API_KEY                - Required for LLM analysis
+# SUPABASE_URL                  - Optional for database storage
+# SUPABASE_ANON_KEY             - Optional for frontend queries
+# SUPABASE_SERVICE_ROLE_KEY     - Optional for backend jobs
+
+# ================================
+# INSTALLATION
+# ================================
+# 1. Clone the repository
+#    git clone https://github.com/yourusername/pulseai.git
+#
+# 2. Install backend dependencies
+#    cd pulseai && npm install
+#
+# 3. Install frontend dependencies
+#    cd frontend && npm install
+#
+# 4. Copy environment template
+#    cp .env.example .env
+#
+# 5. Add your API keys to .env
+#
+# 6. Run the scout
+#    npm run scout "CompanyName"
+#
+# 7. Start the dashboard
+#    cd frontend && npm run dev
+
+# ================================
+# OPTIONAL: PYTHON TOOLS
+# ================================
+# If you want to use Python for data analysis:
+# pandas>=2.0.0
+# numpy>=1.24.0
+# matplotlib>=3.7.0

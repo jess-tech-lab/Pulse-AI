@@ -1,0 +1,330 @@
+import type { SynthesisReportV2, FeedbackItem } from '@/types';
+
+export const sampleSynthesisV2: SynthesisReportV2 = {
+  summaries: {
+    tldr: 'Users love the AI features but are frustrated by performance issues and lack of offline support.',
+    highlights: [
+      'Database performance is the #1 complaint, affecting 25% of power users',
+      'AI summarization feature has 92% positive sentiment',
+      'Offline mode is the most requested feature',
+      'New user onboarding needs improvement (15% activation friction)',
+      'Mobile app experience lags behind web version',
+    ],
+    executiveBrief: `This analysis reveals a product at a critical juncture. While users deeply value the AI capabilities and flexibility, technical debt in performance is creating churn risk among power users - your most valuable segment.
+
+The data shows a clear pattern: as users invest more in the platform, they hit performance walls that threaten retention. Meanwhile, the lack of offline support is blocking mobile-first users from adoption.
+
+Recommended focus for Q1: Invest in performance infrastructure while protecting the AI features that drive advocacy.`,
+  },
+
+  sentiment: {
+    positive: 45,
+    neutral: 32,
+    negative: 23,
+    mood: 'Stable',
+    moodExplanation: 'Overall sentiment is stable but trending slightly negative as performance issues persist.',
+  },
+
+  focusAreas: [
+    {
+      id: 'usability_friction:Database Performance',
+      title: 'Database Performance',
+      category: 'usability_friction',
+      impactScore: 8.7,
+      frequency: 25,
+      trend: 'up',
+      trendDelta: 8,
+      severityLabel: 'Critical',
+      topQuote: 'My workspace with 5000 pages takes 30 seconds to load. This is killing our team productivity.',
+      rootCause: 'Client-side rendering bottleneck with large datasets',
+      stakes: {
+        type: 'risk',
+        message: 'Risk if ignored: Power user churn likely to increase 15-20% next quarter. These users drive 40% of referrals.',
+      },
+      scoreRationale: 'Score reflects high visibility (234 upvotes), strong sentiment intensity, rapid engagement growth.',
+      affectedSegments: ['Power Users', 'Enterprise Teams', 'Heavy Database Users'],
+    },
+    {
+      id: 'feature_request:Offline Mode',
+      title: 'Offline Mode',
+      category: 'feature_request',
+      impactScore: 7.9,
+      frequency: 18,
+      trend: 'stable',
+      trendDelta: 2,
+      severityLabel: 'High',
+      topQuote: 'I travel frequently and Notion is basically unusable without internet. Considering alternatives.',
+      rootCause: 'Architecture requires constant internet connection for sync',
+      stakes: {
+        type: 'risk',
+        message: 'Risk if ignored: Mobile adoption blocked, competitor advantage (Obsidian, Bear) widening.',
+      },
+      scoreRationale: 'Score reflects moderate reach, high sentiment intensity from mobile users.',
+      affectedSegments: ['Mobile Users', 'Travelers', 'Remote Workers'],
+    },
+    {
+      id: 'usability_friction:Onboarding',
+      title: 'New User Onboarding',
+      category: 'usability_friction',
+      impactScore: 6.5,
+      frequency: 12,
+      trend: 'stable',
+      trendDelta: 0,
+      severityLabel: 'Medium',
+      topQuote: 'Just signed up and I am completely overwhelmed. There are so many features and I have no idea where to start.',
+      rootCause: 'Too many features exposed at once, no guided onboarding',
+      stakes: {
+        type: 'risk',
+        message: 'Risk if ignored: Activation rate stays at 35%, limiting growth potential.',
+      },
+      scoreRationale: 'Score based on consistent new user friction signals.',
+      affectedSegments: ['New Users', 'Personal Use'],
+    },
+    {
+      id: 'feature_request:Mobile App',
+      title: 'Mobile App Improvements',
+      category: 'feature_request',
+      impactScore: 5.8,
+      frequency: 8,
+      trend: 'down',
+      trendDelta: -3,
+      severityLabel: 'Medium',
+      topQuote: 'The mobile app feels like an afterthought. Basic editing is frustrating.',
+      rootCause: 'Web-first development approach',
+      stakes: {
+        type: 'risk',
+        message: 'Risk if ignored: Mobile engagement remains 30% below web.',
+      },
+      scoreRationale: 'Score reflects moderate reach but declining frequency.',
+      affectedSegments: ['Mobile Users'],
+    },
+    {
+      id: 'bug:Sync Issues',
+      title: 'Sync Conflicts',
+      category: 'bug',
+      impactScore: 5.2,
+      frequency: 6,
+      trend: 'new',
+      trendDelta: 6,
+      severityLabel: 'High',
+      topQuote: 'Lost 2 hours of work due to sync conflict. No warning, just overwrote my changes.',
+      rootCause: 'Conflict resolution algorithm edge cases',
+      stakes: {
+        type: 'risk',
+        message: 'Risk if ignored: Data loss stories spread virally, damaging trust.',
+      },
+      scoreRationale: 'Score reflects new issue with high severity signals.',
+      affectedSegments: ['Team Users', 'Collaborative Workspaces'],
+    },
+  ],
+
+  brandStrengths: {
+    overallScore: 7.8,
+    topLoves: [
+      {
+        feature: 'AI Summarization',
+        quote: 'Notion AI saved me hours summarizing 50 pages of meeting notes. Game changer.',
+        shareability: 9,
+      },
+      {
+        feature: 'Flexibility',
+        quote: 'I built my entire CRM, project tracker, and wiki in one tool. Nothing else comes close.',
+        shareability: 8,
+      },
+      {
+        feature: 'Team Collaboration',
+        quote: 'Real-time collaboration finally works. No more "who has the latest version" chaos.',
+        shareability: 8,
+      },
+    ],
+    brandPersonality: ['Powerful', 'Flexible', 'Modern'],
+  },
+
+  suggestedOKRs: [
+    {
+      theme: 'Performance & Reliability',
+      objective: 'Make Notion feel instant for power users',
+      keyResults: [
+        'Reduce P95 page load time from 8s to under 2s for workspaces with 1000+ pages',
+        'Zero data loss incidents from sync conflicts',
+        'Increase power user NPS from 32 to 50',
+      ],
+      timeframe: 'Q1',
+    },
+    {
+      theme: 'Mobile & Offline',
+      objective: 'Enable productivity anywhere',
+      keyResults: [
+        'Ship offline mode for viewing and basic editing',
+        'Increase mobile DAU/WAU ratio from 0.3 to 0.5',
+        'Reduce mobile app store rating complaints by 40%',
+      ],
+      timeframe: 'Q2',
+    },
+    {
+      theme: 'Activation',
+      objective: 'Help new users find value in first week',
+      keyResults: [
+        'Increase Day 7 retention from 35% to 50%',
+        'Reduce "overwhelmed" sentiment in new user feedback by 60%',
+        'Launch use-case specific onboarding paths',
+      ],
+      timeframe: 'Q1',
+    },
+  ],
+
+  priorityMatrix: [
+    { title: 'Performance Optimization', category: 'usability_friction', impactScore: 8.7, effortEstimate: 'Large', quadrant: 'Strategic Investments', frequency: 25 },
+    { title: 'Offline Mode', category: 'feature_request', impactScore: 7.9, effortEstimate: 'Large', quadrant: 'Strategic Investments', frequency: 18 },
+    { title: 'Onboarding Redesign', category: 'usability_friction', impactScore: 6.5, effortEstimate: 'Medium', quadrant: 'Quick Wins', frequency: 12 },
+    { title: 'Sync Bug Fixes', category: 'bug', impactScore: 5.2, effortEstimate: 'Quick Win', quadrant: 'Quick Wins', frequency: 6 },
+    { title: 'Mobile Improvements', category: 'feature_request', impactScore: 5.8, effortEstimate: 'Large', quadrant: 'Reconsider', frequency: 8 },
+  ],
+
+  expectationGaps: [
+    {
+      expectation: 'Simple note-taking app',
+      reality: 'Complex database tool with steep learning curve',
+      gapSeverity: 'High',
+      suggestedFix: 'Create "Simple Mode" for new users that hides advanced features',
+    },
+    {
+      expectation: 'Works offline seamlessly',
+      reality: 'Requires internet for most features',
+      gapSeverity: 'High',
+      suggestedFix: 'Implement local-first architecture with background sync',
+    },
+    {
+      expectation: 'Fast performance at any scale',
+      reality: 'Degrades significantly with large workspaces',
+      gapSeverity: 'Medium',
+      suggestedFix: 'Virtualization and lazy loading for large databases',
+    },
+  ],
+
+  metadata: {
+    totalAnalyzed: 156,
+    highSignalCount: 89,
+    noiseFiltered: 67,
+    dataSources: ['Reddit', 'Twitter'],
+    analysisDate: new Date().toISOString(),
+  },
+};
+
+export const sampleFeedbackItemsV2: FeedbackItem[] = [
+  {
+    id: '1',
+    sourceId: 'reddit_perf_001',
+    source: 'reddit',
+    subreddit: 'Notion',
+    title: 'Performance is killing my productivity',
+    content: 'My workspace with 5000+ pages is basically unusable. Takes 30+ seconds to load and the search is painfully slow.',
+    author: 'productivityfan',
+    url: 'https://reddit.com/r/Notion/comments/perf001',
+    score: 234,
+    numComments: 89,
+    createdAt: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString(),
+    classification: {
+      type: 'Constructive',
+      category: 'Usability Friction',
+      problemMetadata: {
+        rootCause: 'Client-side rendering bottleneck',
+        featureArea: 'Database Performance',
+        impactType: 'Retention',
+        urgencySignal: 'Churn Risk',
+        userSegmentGuess: 'Power User',
+        impactScore: 9,
+        urgencyScore: 8,
+        effortGuess: 'Large',
+      },
+      delightMetadata: null,
+      summary: {
+        actionableInsight: 'Implement virtualization for large workspaces',
+        replyDraft: 'We hear you on performance. This is our top priority for Q1.',
+        keyQuote: 'Takes 30+ seconds to load',
+      },
+      confidence: 0.92,
+      reasoning: 'Clear performance issue with churn signals',
+    },
+    impactData: {
+      score: 8.7,
+      maxScore: 10,
+      breakdown: {
+        reach: { value: 8.2, weight: 0.4 },
+        sentiment: { value: 9, weight: 0.3 },
+        velocity: { value: 8.5, weight: 0.3 },
+      },
+      rationale: 'Score reflects high visibility (234 upvotes), strong sentiment intensity.',
+      stakes: {
+        type: 'risk',
+        message: 'Risk if ignored: Power user churn likely to increase.',
+      },
+    },
+  },
+  {
+    id: '2',
+    sourceId: 'reddit_ai_001',
+    source: 'reddit',
+    subreddit: 'productivity',
+    title: 'Notion AI is incredible',
+    content: 'Just used Notion AI to summarize 50 pages of meeting notes. What would have taken me 2 hours took 30 seconds. Absolutely blown away.',
+    author: 'ai_enthusiast',
+    url: 'https://reddit.com/r/productivity/comments/ai001',
+    score: 523,
+    numComments: 67,
+    createdAt: new Date(Date.now() - 12 * 60 * 60 * 1000).toISOString(),
+    classification: {
+      type: 'Praise',
+      category: 'N/A',
+      problemMetadata: null,
+      delightMetadata: {
+        ahaMonent: 'AI summarization',
+        valuePropValidation: 'Time savings',
+        shareability: 9,
+        testimonialQuote: 'What would have taken me 2 hours took 30 seconds',
+      },
+      summary: {
+        actionableInsight: 'Feature AI heavily in marketing',
+        replyDraft: 'So glad AI is saving you time! Happy to hear more about your use case.',
+        keyQuote: 'What would have taken me 2 hours took 30 seconds',
+      },
+      confidence: 0.95,
+      reasoning: 'Strong praise for AI feature',
+    },
+  },
+  {
+    id: '3',
+    sourceId: 'reddit_offline_001',
+    source: 'reddit',
+    subreddit: 'Notion',
+    title: 'Offline mode desperately needed',
+    content: 'I travel for work constantly and Notion is basically useless without internet. Considering switching to Obsidian just for this.',
+    author: 'traveler_dev',
+    url: 'https://reddit.com/r/Notion/comments/offline001',
+    score: 189,
+    numComments: 134,
+    createdAt: new Date(Date.now() - 48 * 60 * 60 * 1000).toISOString(),
+    classification: {
+      type: 'Constructive',
+      category: 'Feature Request',
+      problemMetadata: {
+        rootCause: 'Cloud-first architecture',
+        featureArea: 'Offline Mode',
+        impactType: 'Retention',
+        urgencySignal: 'Competitor Mentioned',
+        userSegmentGuess: 'Mobile User',
+        impactScore: 8,
+        urgencyScore: 7,
+        effortGuess: 'Large',
+      },
+      delightMetadata: null,
+      summary: {
+        actionableInsight: 'Prioritize offline mode for mobile retention',
+        replyDraft: 'Offline mode is on our roadmap. Would love to understand your workflow better.',
+        keyQuote: 'Considering switching to Obsidian',
+      },
+      confidence: 0.88,
+      reasoning: 'Feature request with competitor churn signal',
+    },
+  },
+];
