@@ -14,13 +14,13 @@ interface SmartSuggestion {
   query: string;
 }
 
-interface AskPulsePanelProps {
+interface AskThreaderPanelProps {
   isOpen: boolean;
   onClose: () => void;
   suggestions: SmartSuggestion[];
 }
 
-export function AskPulsePanel({ isOpen, onClose, suggestions }: AskPulsePanelProps) {
+export function AskThreaderPanel({ isOpen, onClose, suggestions }: AskThreaderPanelProps) {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -98,7 +98,7 @@ export function AskPulsePanel({ isOpen, onClose, suggestions }: AskPulsePanelPro
                     <Sparkles className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <h2 className="text-title">Ask Pulse</h2>
+                    <h2 className="text-title">Ask Threader</h2>
                     <p className="text-xs text-muted-foreground">
                       Ask questions about this report
                     </p>

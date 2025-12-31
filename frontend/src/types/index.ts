@@ -1,4 +1,4 @@
-// Pulse AI Dashboard Types v2.0
+// Threader AI Dashboard Types v2.0
 
 // ============================================================================
 // IMPACT SCORING

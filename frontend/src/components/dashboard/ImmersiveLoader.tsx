@@ -192,7 +192,7 @@ export function ImmersiveLoader({
           will-change: transform, opacity;
         }
 
-        /* Layer 1: Soft pink - large, slow breathing movement */
+        /* Layer 1: Soft pink - large, breathing movement */
         .gradient-blob-1 {
           background: radial-gradient(
             ellipse 80% 60% at 20% 30%,
@@ -200,7 +200,7 @@ export function ImmersiveLoader({
             rgba(252, 231, 243, 0.6) 40%,
             transparent 70%
           );
-          animation: drift1 20s ease-in-out infinite, breathe1 8s ease-in-out infinite;
+          animation: drift1 8s ease-in-out infinite, breathe1 4s ease-in-out infinite;
         }
 
         /* Layer 2: Purple/violet - drifts opposite direction */
@@ -211,10 +211,10 @@ export function ImmersiveLoader({
             rgba(221, 214, 254, 0.5) 45%,
             transparent 70%
           );
-          animation: drift2 25s ease-in-out infinite, breathe2 12s ease-in-out infinite;
+          animation: drift2 10s ease-in-out infinite, breathe2 5s ease-in-out infinite;
         }
 
-        /* Layer 3: Mint/teal - bottom area, slow rotation feel */
+        /* Layer 3: Mint/teal - bottom area, rotation feel */
         .gradient-blob-3 {
           background: radial-gradient(
             ellipse 90% 50% at 50% 90%,
@@ -222,7 +222,7 @@ export function ImmersiveLoader({
             rgba(167, 243, 208, 0.4) 50%,
             transparent 70%
           );
-          animation: drift3 18s ease-in-out infinite, breathe3 10s ease-in-out infinite;
+          animation: drift3 7s ease-in-out infinite, breathe3 4.5s ease-in-out infinite;
         }
 
         /* Layer 4: Warm peach/yellow - accent that fades in/out */
@@ -233,53 +233,80 @@ export function ImmersiveLoader({
             rgba(254, 215, 170, 0.3) 50%,
             transparent 70%
           );
-          animation: drift4 22s ease-in-out infinite, pulse4 6s ease-in-out infinite;
+          animation: drift4 9s ease-in-out infinite, pulse4 3s ease-in-out infinite;
         }
 
         /* Drift animations - each blob moves in its own organic path */
         @keyframes drift1 {
           0%, 100% { transform: translate(0%, 0%) scale(1); }
-          25% { transform: translate(5%, 10%) scale(1.05); }
-          50% { transform: translate(-5%, 5%) scale(0.95); }
-          75% { transform: translate(8%, -5%) scale(1.02); }
+          25% { transform: translate(8%, 15%) scale(1.08); }
+          50% { transform: translate(-8%, 8%) scale(0.92); }
+          75% { transform: translate(12%, -8%) scale(1.05); }
         }
 
         @keyframes drift2 {
           0%, 100% { transform: translate(0%, 0%) scale(1); }
-          33% { transform: translate(-10%, 8%) scale(1.08); }
-          66% { transform: translate(5%, -10%) scale(0.92); }
+          33% { transform: translate(-15%, 12%) scale(1.12); }
+          66% { transform: translate(8%, -15%) scale(0.88); }
         }
 
         @keyframes drift3 {
           0%, 100% { transform: translate(0%, 0%) rotate(0deg); }
-          50% { transform: translate(10%, -5%) rotate(3deg); }
+          50% { transform: translate(15%, -8%) rotate(5deg); }
         }
 
         @keyframes drift4 {
           0%, 100% { transform: translate(0%, 0%); }
-          30% { transform: translate(-15%, 10%); }
-          60% { transform: translate(10%, -8%); }
+          30% { transform: translate(-20%, 15%); }
+          60% { transform: translate(15%, -12%); }
         }
 
         /* Breathing animations - opacity pulses */
         @keyframes breathe1 {
           0%, 100% { opacity: 0.7; }
-          50% { opacity: 0.5; }
+          50% { opacity: 0.4; }
         }
 
         @keyframes breathe2 {
-          0%, 100% { opacity: 0.6; }
+          0%, 100% { opacity: 0.5; }
           50% { opacity: 0.8; }
         }
 
         @keyframes breathe3 {
-          0%, 100% { opacity: 0.5; }
+          0%, 100% { opacity: 0.4; }
           50% { opacity: 0.7; }
         }
 
         @keyframes pulse4 {
-          0%, 100% { opacity: 0.4; }
+          0%, 100% { opacity: 0.3; }
           50% { opacity: 0.6; }
+        }
+
+        /* Pulsing blob indicator */
+        .pulse-blob {
+          width: 52px;
+          height: 52px;
+          border-radius: 50%;
+          background: linear-gradient(135deg, rgba(180, 180, 185, 0.4) 0%, rgba(160, 160, 170, 0.25) 100%);
+          box-shadow:
+            0 0 20px rgba(140, 140, 150, 0.2),
+            0 0 40px rgba(140, 140, 150, 0.1);
+          animation: blobPulse 2.5s ease-in-out infinite;
+        }
+
+        @keyframes blobPulse {
+          0%, 100% {
+            transform: scale(1);
+            box-shadow:
+              0 0 20px rgba(140, 140, 150, 0.2),
+              0 0 40px rgba(140, 140, 150, 0.1);
+          }
+          50% {
+            transform: scale(1.15);
+            box-shadow:
+              0 0 30px rgba(140, 140, 150, 0.3),
+              0 0 60px rgba(140, 140, 150, 0.15);
+          }
         }
       `}</style>
     </div>
@@ -367,37 +394,19 @@ export function StillProcessing({
 
       {/* Shared gradient styles */}
       <style>{`
-        .gradient-blob {
-          position: absolute;
-          inset: 0;
-          opacity: 0.7;
-          filter: blur(80px);
-          will-change: transform, opacity;
-        }
-        .gradient-blob-1 {
-          background: radial-gradient(ellipse 80% 60% at 20% 30%, rgba(253, 242, 248, 0.9) 0%, rgba(252, 231, 243, 0.6) 40%, transparent 70%);
-          animation: drift1 20s ease-in-out infinite, breathe1 8s ease-in-out infinite;
-        }
-        .gradient-blob-2 {
-          background: radial-gradient(ellipse 70% 80% at 80% 20%, rgba(237, 233, 254, 0.8) 0%, rgba(221, 214, 254, 0.5) 45%, transparent 70%);
-          animation: drift2 25s ease-in-out infinite, breathe2 12s ease-in-out infinite;
-        }
-        .gradient-blob-3 {
-          background: radial-gradient(ellipse 90% 50% at 50% 90%, rgba(209, 250, 229, 0.7) 0%, rgba(167, 243, 208, 0.4) 50%, transparent 70%);
-          animation: drift3 18s ease-in-out infinite, breathe3 10s ease-in-out infinite;
-        }
-        .gradient-blob-4 {
-          background: radial-gradient(ellipse 50% 50% at 70% 60%, rgba(254, 243, 199, 0.6) 0%, rgba(254, 215, 170, 0.3) 50%, transparent 70%);
-          animation: drift4 22s ease-in-out infinite, pulse4 6s ease-in-out infinite;
-        }
-        @keyframes drift1 { 0%, 100% { transform: translate(0%, 0%) scale(1); } 25% { transform: translate(5%, 10%) scale(1.05); } 50% { transform: translate(-5%, 5%) scale(0.95); } 75% { transform: translate(8%, -5%) scale(1.02); } }
-        @keyframes drift2 { 0%, 100% { transform: translate(0%, 0%) scale(1); } 33% { transform: translate(-10%, 8%) scale(1.08); } 66% { transform: translate(5%, -10%) scale(0.92); } }
-        @keyframes drift3 { 0%, 100% { transform: translate(0%, 0%) rotate(0deg); } 50% { transform: translate(10%, -5%) rotate(3deg); } }
-        @keyframes drift4 { 0%, 100% { transform: translate(0%, 0%); } 30% { transform: translate(-15%, 10%); } 60% { transform: translate(10%, -8%); } }
-        @keyframes breathe1 { 0%, 100% { opacity: 0.7; } 50% { opacity: 0.5; } }
-        @keyframes breathe2 { 0%, 100% { opacity: 0.6; } 50% { opacity: 0.8; } }
-        @keyframes breathe3 { 0%, 100% { opacity: 0.5; } 50% { opacity: 0.7; } }
-        @keyframes pulse4 { 0%, 100% { opacity: 0.4; } 50% { opacity: 0.6; } }
+        .gradient-blob { position: absolute; inset: 0; opacity: 0.7; filter: blur(80px); will-change: transform, opacity; }
+        .gradient-blob-1 { background: radial-gradient(ellipse 80% 60% at 20% 30%, rgba(253, 242, 248, 0.9) 0%, rgba(252, 231, 243, 0.6) 40%, transparent 70%); animation: drift1 8s ease-in-out infinite, breathe1 4s ease-in-out infinite; }
+        .gradient-blob-2 { background: radial-gradient(ellipse 70% 80% at 80% 20%, rgba(237, 233, 254, 0.8) 0%, rgba(221, 214, 254, 0.5) 45%, transparent 70%); animation: drift2 10s ease-in-out infinite, breathe2 5s ease-in-out infinite; }
+        .gradient-blob-3 { background: radial-gradient(ellipse 90% 50% at 50% 90%, rgba(209, 250, 229, 0.7) 0%, rgba(167, 243, 208, 0.4) 50%, transparent 70%); animation: drift3 7s ease-in-out infinite, breathe3 4.5s ease-in-out infinite; }
+        .gradient-blob-4 { background: radial-gradient(ellipse 50% 50% at 70% 60%, rgba(254, 243, 199, 0.6) 0%, rgba(254, 215, 170, 0.3) 50%, transparent 70%); animation: drift4 9s ease-in-out infinite, pulse4 3s ease-in-out infinite; }
+        @keyframes drift1 { 0%, 100% { transform: translate(0%, 0%) scale(1); } 25% { transform: translate(8%, 15%) scale(1.08); } 50% { transform: translate(-8%, 8%) scale(0.92); } 75% { transform: translate(12%, -8%) scale(1.05); } }
+        @keyframes drift2 { 0%, 100% { transform: translate(0%, 0%) scale(1); } 33% { transform: translate(-15%, 12%) scale(1.12); } 66% { transform: translate(8%, -15%) scale(0.88); } }
+        @keyframes drift3 { 0%, 100% { transform: translate(0%, 0%) rotate(0deg); } 50% { transform: translate(15%, -8%) rotate(5deg); } }
+        @keyframes drift4 { 0%, 100% { transform: translate(0%, 0%); } 30% { transform: translate(-20%, 15%); } 60% { transform: translate(15%, -12%); } }
+        @keyframes breathe1 { 0%, 100% { opacity: 0.7; } 50% { opacity: 0.4; } }
+        @keyframes breathe2 { 0%, 100% { opacity: 0.5; } 50% { opacity: 0.8; } }
+        @keyframes breathe3 { 0%, 100% { opacity: 0.4; } 50% { opacity: 0.7; } }
+        @keyframes pulse4 { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.6; } }
       `}</style>
     </div>
   );
@@ -489,37 +498,19 @@ export function NoDataFound({
 
       {/* Shared gradient styles */}
       <style>{`
-        .gradient-blob {
-          position: absolute;
-          inset: 0;
-          opacity: 0.7;
-          filter: blur(80px);
-          will-change: transform, opacity;
-        }
-        .gradient-blob-1 {
-          background: radial-gradient(ellipse 80% 60% at 20% 30%, rgba(253, 242, 248, 0.9) 0%, rgba(252, 231, 243, 0.6) 40%, transparent 70%);
-          animation: drift1 20s ease-in-out infinite, breathe1 8s ease-in-out infinite;
-        }
-        .gradient-blob-2 {
-          background: radial-gradient(ellipse 70% 80% at 80% 20%, rgba(237, 233, 254, 0.8) 0%, rgba(221, 214, 254, 0.5) 45%, transparent 70%);
-          animation: drift2 25s ease-in-out infinite, breathe2 12s ease-in-out infinite;
-        }
-        .gradient-blob-3 {
-          background: radial-gradient(ellipse 90% 50% at 50% 90%, rgba(209, 250, 229, 0.7) 0%, rgba(167, 243, 208, 0.4) 50%, transparent 70%);
-          animation: drift3 18s ease-in-out infinite, breathe3 10s ease-in-out infinite;
-        }
-        .gradient-blob-4 {
-          background: radial-gradient(ellipse 50% 50% at 70% 60%, rgba(254, 243, 199, 0.6) 0%, rgba(254, 215, 170, 0.3) 50%, transparent 70%);
-          animation: drift4 22s ease-in-out infinite, pulse4 6s ease-in-out infinite;
-        }
-        @keyframes drift1 { 0%, 100% { transform: translate(0%, 0%) scale(1); } 25% { transform: translate(5%, 10%) scale(1.05); } 50% { transform: translate(-5%, 5%) scale(0.95); } 75% { transform: translate(8%, -5%) scale(1.02); } }
-        @keyframes drift2 { 0%, 100% { transform: translate(0%, 0%) scale(1); } 33% { transform: translate(-10%, 8%) scale(1.08); } 66% { transform: translate(5%, -10%) scale(0.92); } }
-        @keyframes drift3 { 0%, 100% { transform: translate(0%, 0%) rotate(0deg); } 50% { transform: translate(10%, -5%) rotate(3deg); } }
-        @keyframes drift4 { 0%, 100% { transform: translate(0%, 0%); } 30% { transform: translate(-15%, 10%); } 60% { transform: translate(10%, -8%); } }
-        @keyframes breathe1 { 0%, 100% { opacity: 0.7; } 50% { opacity: 0.5; } }
-        @keyframes breathe2 { 0%, 100% { opacity: 0.6; } 50% { opacity: 0.8; } }
-        @keyframes breathe3 { 0%, 100% { opacity: 0.5; } 50% { opacity: 0.7; } }
-        @keyframes pulse4 { 0%, 100% { opacity: 0.4; } 50% { opacity: 0.6; } }
+        .gradient-blob { position: absolute; inset: 0; opacity: 0.7; filter: blur(80px); will-change: transform, opacity; }
+        .gradient-blob-1 { background: radial-gradient(ellipse 80% 60% at 20% 30%, rgba(253, 242, 248, 0.9) 0%, rgba(252, 231, 243, 0.6) 40%, transparent 70%); animation: drift1 8s ease-in-out infinite, breathe1 4s ease-in-out infinite; }
+        .gradient-blob-2 { background: radial-gradient(ellipse 70% 80% at 80% 20%, rgba(237, 233, 254, 0.8) 0%, rgba(221, 214, 254, 0.5) 45%, transparent 70%); animation: drift2 10s ease-in-out infinite, breathe2 5s ease-in-out infinite; }
+        .gradient-blob-3 { background: radial-gradient(ellipse 90% 50% at 50% 90%, rgba(209, 250, 229, 0.7) 0%, rgba(167, 243, 208, 0.4) 50%, transparent 70%); animation: drift3 7s ease-in-out infinite, breathe3 4.5s ease-in-out infinite; }
+        .gradient-blob-4 { background: radial-gradient(ellipse 50% 50% at 70% 60%, rgba(254, 243, 199, 0.6) 0%, rgba(254, 215, 170, 0.3) 50%, transparent 70%); animation: drift4 9s ease-in-out infinite, pulse4 3s ease-in-out infinite; }
+        @keyframes drift1 { 0%, 100% { transform: translate(0%, 0%) scale(1); } 25% { transform: translate(8%, 15%) scale(1.08); } 50% { transform: translate(-8%, 8%) scale(0.92); } 75% { transform: translate(12%, -8%) scale(1.05); } }
+        @keyframes drift2 { 0%, 100% { transform: translate(0%, 0%) scale(1); } 33% { transform: translate(-15%, 12%) scale(1.12); } 66% { transform: translate(8%, -15%) scale(0.88); } }
+        @keyframes drift3 { 0%, 100% { transform: translate(0%, 0%) rotate(0deg); } 50% { transform: translate(15%, -8%) rotate(5deg); } }
+        @keyframes drift4 { 0%, 100% { transform: translate(0%, 0%); } 30% { transform: translate(-20%, 15%); } 60% { transform: translate(15%, -12%); } }
+        @keyframes breathe1 { 0%, 100% { opacity: 0.7; } 50% { opacity: 0.4; } }
+        @keyframes breathe2 { 0%, 100% { opacity: 0.5; } 50% { opacity: 0.8; } }
+        @keyframes breathe3 { 0%, 100% { opacity: 0.4; } 50% { opacity: 0.7; } }
+        @keyframes pulse4 { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.6; } }
       `}</style>
     </div>
   );

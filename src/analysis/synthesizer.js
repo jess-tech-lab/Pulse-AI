@@ -1,5 +1,5 @@
 /**
- * Pulse AI - Synthesis Engine v2.0
+ * Threader AI - Synthesis Engine v2.0
  * Transforms analyzed feedback into strategic reports with advanced scoring
  *
  * Impact Formula: (Reach × 0.4) + (Sentiment × 0.3) + (Velocity × 0.3)
@@ -654,7 +654,7 @@ export function formatSynthesisReport(synthesis, companyName) {
 // ============================================================================
 
 async function main() {
-  console.log('Pulse AI - Synthesis Engine v2.0 Test');
+  console.log('Threader AI - Synthesis Engine v2.0 Test');
 
   if (!process.env.OPENAI_API_KEY) {
     console.error('Error: OPENAI_API_KEY not set');

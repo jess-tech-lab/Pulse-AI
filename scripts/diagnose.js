@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Pulse AI - Diagnostic Script
+ * Threader AI - Diagnostic Script
  * Tests the connection between scout.js and the frontend
  *
  * Usage: node scripts/diagnose.js [company_name]

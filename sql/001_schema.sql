@@ -1,11 +1,11 @@
--- Pulse AI - Database Schema with Row-Level Security for Multi-Tenancy
+-- Threader AI - Database Schema with Row-Level Security for Multi-Tenancy
 -- Run this in your Supabase SQL Editor
 
 -- ============================================================================
 -- TABLES
 -- ============================================================================
 
--- Tenants table (companies using Pulse AI)
+-- Tenants table (companies using Threader AI)
 CREATE TABLE IF NOT EXISTS tenants (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     name VARCHAR(255) NOT NULL,

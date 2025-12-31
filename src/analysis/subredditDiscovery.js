@@ -1,5 +1,5 @@
 /**
- * Pulse AI - Subreddit Discovery
+ * Threader AI - Subreddit Discovery
  * Uses LLM to identify relevant subreddits for a company, then validates they exist
  */
 
@@ -10,7 +10,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const USER_AGENT = 'PulseAI/1.0.0 (Subreddit Discovery)';
+const USER_AGENT = 'ThreaderAI/1.0.0 (Subreddit Discovery)';
 
 // Initialize LLM
 const llm = new ChatOpenAI({
@@ -187,7 +187,7 @@ async function main() {
   const companyName = process.argv[2] || 'Notion';
 
   console.log('='.repeat(60));
-  console.log('Pulse AI - Subreddit Discovery');
+  console.log('Threader AI - Subreddit Discovery');
   console.log('='.repeat(60));
 
   if (!process.env.OPENAI_API_KEY) {

@@ -24,7 +24,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 // Demo user for when Supabase isn't configured
 const DEMO_USER: User = {
   id: 'demo-user-id',
-  email: 'demo@pulseai.com',
+  email: 'demo@threader.ai',
   app_metadata: {},
   user_metadata: { full_name: 'Demo User' },
   aud: 'authenticated',
@@ -33,7 +33,7 @@ const DEMO_USER: User = {
 
 const DEMO_PROFILE: Profile = {
   id: 'demo-user-id',
-  email: 'demo@pulseai.com',
+  email: 'demo@threader.ai',
   full_name: 'Demo User',
   tenant_id: 'demo-tenant',
   role: 'admin',

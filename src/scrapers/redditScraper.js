@@ -1,5 +1,5 @@
 /**
- * Pulse AI - Reddit Scraper
+ * Threader AI - Reddit Scraper
  * Fetches recent mentions of a company from Reddit using Reddit's public JSON API
  * Uses LLM to discover relevant subreddits first, then searches within them
  * This is free and doesn't require any paid services (except OpenAI for discovery)
@@ -11,7 +11,7 @@ import { discoverSubreddits, quickDiscoverSubreddits } from '../analysis/subredd
 dotenv.config();
 
 // User agent for Reddit API requests (required by Reddit)
-const USER_AGENT = 'PulseAI/1.0.0 (Product Feedback Analyzer)';
+const USER_AGENT = 'ThreaderAI/1.0.0 (Product Feedback Analyzer)';
 
 // Rate limiting: Reddit allows ~60 requests per minute for unauthenticated requests
 const RATE_LIMIT_DELAY = 1000; // 1 second between requests
@@ -123,7 +123,7 @@ export async function fetchRedditMentions(companyName, options = {}) {
 }
 
 /**
- * Normalize Reddit item to a standard format for Pulse AI
+ * Normalize Reddit item to a standard format for Threader AI
  * @param {Object} item - Raw Reddit item from Reddit JSON API
  * @param {string} companyName - The company being searched
  * @returns {Object} Normalized feedback item
@@ -417,7 +417,7 @@ async function main() {
   const useSmartScrape = process.argv[3] !== '--basic';
 
   console.log('='.repeat(60));
-  console.log('Pulse AI - Reddit Scraper');
+  console.log('Threader AI - Reddit Scraper');
   console.log('='.repeat(60));
 
   if (useSmartScrape) {

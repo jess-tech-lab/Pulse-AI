@@ -1,12 +1,12 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, X } from 'lucide-react';
 
-interface AskPulseButtonProps {
+interface AskThreaderButtonProps {
   isOpen: boolean;
   onToggle: () => void;
 }
 
-export function AskPulseButton({ isOpen, onToggle }: AskPulseButtonProps) {
+export function AskThreaderButton({ isOpen, onToggle }: AskThreaderButtonProps) {
   return (
     <motion.button
       onClick={onToggle}

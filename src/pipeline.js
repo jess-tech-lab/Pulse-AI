@@ -1,5 +1,5 @@
 /**
- * Pulse AI - Main Data Pipeline
+ * Threader AI - Main Data Pipeline
  * Orchestrates scraping, classification, and storage
  */
 
@@ -31,7 +31,7 @@ export async function runPipeline(companyName, tenantId, options = {}) {
   } = options;
 
   console.log('='.repeat(60));
-  console.log(`Pulse AI Pipeline - ${companyName}`);
+  console.log(`Threader AI Pipeline - ${companyName}`);
   console.log('='.repeat(60));
   console.log(`Tenant: ${tenantId}`);
   console.log('='.repeat(60));
@@ -245,7 +245,7 @@ async function main() {
   // Check for required environment variables
   if (!process.env.OPENAI_API_KEY) {
     console.log('='.repeat(60));
-    console.log('Pulse AI Pipeline - Configuration Check');
+    console.log('Threader AI Pipeline - Configuration Check');
     console.log('='.repeat(60));
     console.log('\n❌ Missing OPENAI_API_KEY');
     console.log('\nTo run the full pipeline:');

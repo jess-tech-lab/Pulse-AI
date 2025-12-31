@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Pulse AI - Terminal Scout
+ * Threader AI - Terminal Scout
  *
  * Dynamic CLI tool for analyzing company feedback from Reddit
  * Usage: npm run scout "CompanyName" [--tenant tenantId]
@@ -64,7 +64,7 @@ function parseArgs() {
 function printHelp() {
   console.log(`
 ╔═══════════════════════════════════════════════════════════════╗
-║                    Pulse AI - Terminal Scout                   ║
+║                  Threader AI - Terminal Scout                  ║
 ╠═══════════════════════════════════════════════════════════════╣
 ║  Analyze company feedback from Reddit using AI                 ║
 ╚═══════════════════════════════════════════════════════════════╝
@@ -237,7 +237,7 @@ CREATE INDEX idx_snapshots_created_at ON public.snapshots(created_at DESC);
 async function scout(companyName, tenantId) {
   console.log(`
 ╔═══════════════════════════════════════════════════════════════╗
-║                    Pulse AI - Terminal Scout                   ║
+║                  Threader AI - Terminal Scout                  ║
 ╠═══════════════════════════════════════════════════════════════╣
 ║  Company: ${companyName.padEnd(50)}║
 ║  Tenant:  ${tenantId.padEnd(50)}║

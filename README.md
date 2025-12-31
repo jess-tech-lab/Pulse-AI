@@ -1,4 +1,4 @@
-# Pulse AI
+# Threader AI
 
 > **AI-Powered Product Feedback Intelligence**
 >
@@ -21,7 +21,7 @@ The result? **The "Noise-to-Signal" gap:**
 
 ## The Solution
 
-Pulse AI is an **autonomous feedback intelligence agent** that:
+Threader AI is an **autonomous feedback intelligence agent** that:
 
 1. **Hunts** for product mentions across Reddit and social platforms
 2. **Analyzes** each piece of feedback through a Senior PM lens
@@ -34,7 +34,7 @@ Pulse AI is an **autonomous feedback intelligence agent** that:
 
 ### "What They Say vs. What They Mean"
 
-Pulse AI doesn't just summarize feedback—it performs **root cause analysis** to understand the underlying user need:
+Threader AI doesn't just summarize feedback—it performs **root cause analysis** to understand the underlying user need:
 
 | What They Say | What They Mean | Root Cause |
 |---------------|----------------|------------|
@@ -83,7 +83,7 @@ Where:
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                        Pulse AI Pipeline                        │
+│                       Threader AI Pipeline                       │
 └─────────────────────────────────────────────────────────────────┘
                               │
                               ▼
@@ -141,8 +141,8 @@ Where:
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/pulseai.git
-cd pulseai
+git clone https://github.com/yourusername/threader-ai.git
+cd threader-ai
 
 # Install backend dependencies
 npm install
@@ -202,7 +202,7 @@ Open [http://localhost:5173](http://localhost:5173) to view the dashboard.
 
 ### Row-Level Security (RLS)
 
-Pulse AI is built for multi-tenant SaaS deployments. Every database table is protected by Supabase Row-Level Security:
+Threader AI is built for multi-tenant SaaS deployments. Every database table is protected by Supabase Row-Level Security:
 
 ```sql
 -- Users can only see their own tenant's data
@@ -238,7 +238,7 @@ This means:
 - Impact-scored cards with trend badges (Rising, Stable, New)
 - Risk stakes highlighting ("Ignoring this risks...")
 - User segment tags (Power Users, Mobile, Enterprise)
-- "Ask Pulse" AI chat integration
+- "Ask Threader" AI chat integration
 
 ### What Users Love
 - Star-rated testimonials with shareability scores
@@ -264,7 +264,7 @@ This means:
 ## Project Structure
 
 ```
-pulseai/
+threader-ai/
 ├── src/                          # Backend (Node.js)
 │   ├── scrapers/
 │   │   ├── redditScraper.js      # Reddit API integration

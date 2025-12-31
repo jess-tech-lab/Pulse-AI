@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Pulse AI - Demo Preparation Script
+ * Threader AI - Demo Preparation Script
  *
  * Prepares a demo for a specific company by:
  * 1. Running the scout pipeline to gather fresh data
@@ -52,7 +52,7 @@ function parseArgs() {
 function printHelp() {
   console.log(`
 ╔═══════════════════════════════════════════════════════════════╗
-║                  Pulse AI - Demo Setup                         ║
+║                  Threader AI - Demo Setup                         ║
 ╠═══════════════════════════════════════════════════════════════╣
 ║  Prepare a demo for client outreach                            ║
 ╚═══════════════════════════════════════════════════════════════╝
@@ -195,7 +195,7 @@ async function main() {
 
   console.log(`
 ╔═══════════════════════════════════════════════════════════════╗
-║                  Pulse AI - Demo Setup                         ║
+║                  Threader AI - Demo Setup                         ║
 ╠═══════════════════════════════════════════════════════════════╣
 ║  Company: ${args.companyName.padEnd(50)}║
 ╚═══════════════════════════════════════════════════════════════╝

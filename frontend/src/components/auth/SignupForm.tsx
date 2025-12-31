@@ -68,7 +68,7 @@ export function SignupForm({ onSwitchToLogin }: SignupFormProps) {
             </div>
           </div>
           <CardTitle className="text-2xl">Create an account</CardTitle>
-          <CardDescription>Get started with Pulse AI</CardDescription>
+          <CardDescription>Get started with Threader AI</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">

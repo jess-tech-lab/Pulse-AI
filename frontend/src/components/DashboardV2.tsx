@@ -22,8 +22,8 @@ import { Button } from '@/components/ui/button';
 import { GlassCard } from '@/components/ui/glass-card';
 import { MiniNav } from '@/components/dashboard/MiniNav';
 import { FocusAreaCard } from '@/components/dashboard/FocusAreaCard';
-import { AskPulseButton } from '@/components/dashboard/AskPulseButton';
-import { AskPulsePanel } from '@/components/dashboard/AskPulsePanel';
+import { AskThreaderButton } from '@/components/dashboard/AskThreaderButton';
+import { AskThreaderPanel } from '@/components/dashboard/AskThreaderPanel';
 import {
   generateFullReport,
   generateOnePager,
@@ -68,7 +68,7 @@ function EmptyState({ companyName }: { companyName: string }) {
 export function DashboardV2({ demoMode }: DashboardV2Props) {
   const [isDark, setIsDark] = useState(false);
   const [isNarrativeExpanded, setIsNarrativeExpanded] = useState(false);
-  const [isAskPulseOpen, setIsAskPulseOpen] = useState(false);
+  const [isAskThreaderOpen, setIsAskThreaderOpen] = useState(false);
   const [isExporting, setIsExporting] = useState<'full' | 'onepager' | null>(null);
   const [isExportMenuOpen, setIsExportMenuOpen] = useState(false);
 
@@ -90,8 +90,8 @@ export function DashboardV2({ demoMode }: DashboardV2Props) {
     document.documentElement.classList.toggle('dark');
   };
 
-  const handleAskPulse = (_question: string) => {
-    setIsAskPulseOpen(true);
+  const handleAskThreader = (_question: string) => {
+    setIsAskThreaderOpen(true);
   };
 
   const handleExportPDF = async (mode: 'full' | 'onepager') => {
@@ -109,14 +109,14 @@ export function DashboardV2({ demoMode }: DashboardV2Props) {
         ? await generateFullReport(reportData)
         : await generateOnePager(reportData);
       const suffix = mode === 'full' ? 'full-report' : 'executive-summary';
-      const filename = `pulse-${suffix}-${companyName.toLowerCase().replace(/\s+/g, '-')}-${Date.now()}.pdf`;
+      const filename = `threader-${suffix}-${companyName.toLowerCase().replace(/\s+/g, '-')}-${Date.now()}.pdf`;
       downloadPDF(blob, filename);
     } finally {
       setIsExporting(null);
     }
   };
 
-  // Smart suggestions for Ask Pulse - dynamic based on actual data
+  // Smart suggestions for Ask Threader - dynamic based on actual data
   const smartSuggestions = synthesis ? [
     {
       label: `Why is ${synthesis.focusAreas[0]?.title || 'this'} the top issue?`,
@@ -194,7 +194,7 @@ Brand strength is solid at ${synthesis.brandStrengths.overallScore}/10, driven b
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <h1 className="text-lg font-semibold">Pulse</h1>
+                    <h1 className="text-lg font-semibold">Threader</h1>
                     {isDemoMode && (
                       <span className="px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide rounded bg-primary/10 text-primary">
                         Demo
@@ -430,7 +430,7 @@ Brand strength is solid at ${synthesis.brandStrengths.overallScore}/10, driven b
                       key={area.id}
                       focusArea={area}
                       index={i}
-                      onAskPulse={handleAskPulse}
+                      onAskThreader={handleAskThreader}
                     />
                   ))}
                 </div>
@@ -652,22 +652,22 @@ Brand strength is solid at ${synthesis.brandStrengths.overallScore}/10, driven b
             <span>
               Last updated: {synthesis ? new Date(synthesis.metadata.analysisDate).toLocaleString() : '—'}
             </span>
-            <span>Pulse AI</span>
+            <span>Threader AI</span>
           </div>
         </footer>
 
-        {/* Ask Pulse Floating Button - only show if we have data */}
+        {/* Ask Threader Floating Button - only show if we have data */}
         {hasData && (
-          <AskPulseButton
-            isOpen={isAskPulseOpen}
-            onToggle={() => setIsAskPulseOpen(!isAskPulseOpen)}
+          <AskThreaderButton
+            isOpen={isAskThreaderOpen}
+            onToggle={() => setIsAskThreaderOpen(!isAskThreaderOpen)}
           />
         )}
 
-        {/* Ask Pulse Side Panel */}
-        <AskPulsePanel
-          isOpen={isAskPulseOpen}
-          onClose={() => setIsAskPulseOpen(false)}
+        {/* Ask Threader Side Panel */}
+        <AskThreaderPanel
+          isOpen={isAskThreaderOpen}
+          onClose={() => setIsAskThreaderOpen(false)}
           suggestions={smartSuggestions}
         />
       </div>

@@ -22,7 +22,7 @@ export function AuthPage() {
                 <Activity className="w-8 h-8" />
               </div>
             </div>
-            <CardTitle className="text-2xl">Welcome to Pulse AI</CardTitle>
+            <CardTitle className="text-2xl">Welcome to Threader AI</CardTitle>
             <CardDescription>
               AI-Powered Product Feedback Intelligence
             </CardDescription>

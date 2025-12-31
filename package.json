@@ -1,7 +1,7 @@
 {
-  "name": "pulseai",
+  "name": "threader-ai",
   "version": "1.0.0",
-  "description": "Pulse AI - AI agent that hunts for product feedback online",
+  "description": "Threader AI - AI agent that hunts for product feedback online",
   "type": "module",
   "main": "src/index.js",
   "scripts": {

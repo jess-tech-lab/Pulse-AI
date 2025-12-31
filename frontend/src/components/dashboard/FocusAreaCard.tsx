@@ -14,7 +14,7 @@ import type { FocusArea, FocusAreaCategory } from '@/types';
 interface FocusAreaCardProps {
   focusArea: FocusArea;
   index: number;
-  onAskPulse?: (question: string) => void;
+  onAskThreader?: (question: string) => void;
 }
 
 const categoryConfig: Record<FocusAreaCategory, {
@@ -90,7 +90,7 @@ function truncateQuote(quote: string, maxLength: number = 100): string {
   return quote.slice(0, maxLength).trim() + '...';
 }
 
-export function FocusAreaCard({ focusArea, index, onAskPulse }: FocusAreaCardProps) {
+export function FocusAreaCard({ focusArea, index, onAskThreader }: FocusAreaCardProps) {
   const config = categoryConfig[focusArea.category] || categoryConfig.usability_friction;
   const Icon = config.icon;
 
@@ -173,7 +173,7 @@ export function FocusAreaCard({ focusArea, index, onAskPulse }: FocusAreaCardPro
             <span className="line-clamp-2">{focusArea.stakes.message}</span>
           </div>
 
-          {/* Footer: Segments + Ask Pulse */}
+          {/* Footer: Segments + Ask Threader */}
           <div className="mt-auto pt-2 border-t border-border/50">
             <div className="flex items-center justify-between">
               <div className="flex flex-wrap gap-1">
@@ -191,9 +191,9 @@ export function FocusAreaCard({ focusArea, index, onAskPulse }: FocusAreaCardPro
                   </span>
                 )}
               </div>
-              {onAskPulse && (
+              {onAskThreader && (
                 <button
-                  onClick={() => onAskPulse(`Why is "${focusArea.title}" trending ${focusArea.trend}?`)}
+                  onClick={() => onAskThreader(`Why is "${focusArea.title}" trending ${focusArea.trend}?`)}
                   className="flex items-center gap-1 text-xs text-primary hover:text-primary/80 transition-colors"
                 >
                   <MessageCircle className="w-3 h-3" />

@@ -1,5 +1,5 @@
 /**
- * Pulse AI - Supabase Client Configuration
+ * Threader AI - Supabase Client Configuration
  * Provides authenticated client instances for database operations
  */
 

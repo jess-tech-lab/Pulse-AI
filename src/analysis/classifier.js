@@ -1,5 +1,5 @@
 /**
- * Pulse AI - Senior Product Strategist Classifier
+ * Threader AI - Senior Product Strategist Classifier
  * Analyzes product feedback and returns structured strategic insights
  */
 
@@ -416,7 +416,7 @@ export function generateExecutiveSummary(classifiedResults, companyName) {
 
 async function main() {
   console.log('='.repeat(60));
-  console.log('Pulse AI - Senior Product Strategist Classifier');
+  console.log('Threader AI - Senior Product Strategist Classifier');
   console.log('='.repeat(60));
 
   if (!process.env.OPENAI_API_KEY) {

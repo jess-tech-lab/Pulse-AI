@@ -1,5 +1,5 @@
 /**
- * Pulse AI - Differential Analysis Engine
+ * Threader AI - Differential Analysis Engine
  * Compares current analysis with previous snapshots to identify trends
  */
 

@@ -38,7 +38,7 @@ export function LoginForm({ onSwitchToSignup }: LoginFormProps) {
             </div>
           </div>
           <CardTitle className="text-2xl">Welcome back</CardTitle>
-          <CardDescription>Sign in to your Pulse AI account</CardDescription>
+          <CardDescription>Sign in to your Threader AI account</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
