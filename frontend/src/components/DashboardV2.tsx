@@ -14,7 +14,8 @@ import {
   CheckCircle2,
   Award,
   Loader2,
-  Clock
+  Clock,
+  AlertCircle
 } from 'lucide-react';
 import { TooltipProvider, Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { Button } from '@/components/ui/button';
@@ -23,8 +24,6 @@ import { MiniNav } from '@/components/dashboard/MiniNav';
 import { FocusAreaCard } from '@/components/dashboard/FocusAreaCard';
 import { AskPulseButton } from '@/components/dashboard/AskPulseButton';
 import { AskPulsePanel } from '@/components/dashboard/AskPulsePanel';
-import { SkeletonCard, SkeletonHero } from '@/components/dashboard/SkeletonCard';
-import { sampleSynthesisV2 } from '@/data/sampleDataV2';
 import {
   generateFullReport,
   generateOnePager,
@@ -32,27 +31,59 @@ import {
 } from '@/lib/reportGenerator';
 import type { SynthesisReportV2 } from '@/types';
 
-export function DashboardV2() {
+interface DemoModeProps {
+  companyName: string;
+  synthesis: SynthesisReportV2 | null;
+}
+
+interface DashboardV2Props {
+  demoMode?: DemoModeProps;
+}
+
+/**
+ * Empty State Component - Shown when no data is available
+ */
+function EmptyState({ companyName }: { companyName: string }) {
+  return (
+    <div className="text-center py-16">
+      <div className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-muted/50 flex items-center justify-center">
+        <AlertCircle className="w-8 h-8 text-muted-foreground" />
+      </div>
+      <h3 className="text-xl font-semibold text-foreground mb-2">
+        No Data Available
+      </h3>
+      <p className="text-muted-foreground max-w-md mx-auto mb-6">
+        There's no synthesis data for {companyName} yet. Run the scout command to generate a report.
+      </p>
+      <div className="bg-muted/30 border border-border rounded-lg p-4 max-w-xs mx-auto text-left">
+        <p className="text-xs text-muted-foreground mb-2 font-medium">Run this command:</p>
+        <code className="text-sm font-mono text-primary">
+          npm run scout "{companyName}"
+        </code>
+      </div>
+    </div>
+  );
+}
+
+export function DashboardV2({ demoMode }: DashboardV2Props) {
   const [isDark, setIsDark] = useState(false);
   const [isNarrativeExpanded, setIsNarrativeExpanded] = useState(false);
   const [isAskPulseOpen, setIsAskPulseOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
   const [isExporting, setIsExporting] = useState<'full' | 'onepager' | null>(null);
   const [isExportMenuOpen, setIsExportMenuOpen] = useState(false);
-  const [synthesis, setSynthesis] = useState<SynthesisReportV2 | null>(null);
 
-  const companyName = 'Notion';
+  // Demo mode: company name comes from URL, synthesis comes from useDemoMode hook
+  // Non-demo mode: defaults (for authenticated users)
+  const companyName = demoMode?.companyName || 'Your Company';
+  const synthesis = demoMode?.synthesis || null;
+  const isDemoMode = !!demoMode;
   const reportType = 'Reddit Sentiment Report';
   const dataTimeframe = '48 hours';
 
-  // Simulate data loading
+  // Reset narrative expanded state when company changes
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setSynthesis(sampleSynthesisV2);
-      setIsLoading(false);
-    }, 1200);
-    return () => clearTimeout(timer);
-  }, []);
+    setIsNarrativeExpanded(false);
+  }, [companyName]);
 
   const toggleTheme = () => {
     setIsDark(!isDark);
@@ -78,19 +109,31 @@ export function DashboardV2() {
         ? await generateFullReport(reportData)
         : await generateOnePager(reportData);
       const suffix = mode === 'full' ? 'full-report' : 'executive-summary';
-      const filename = `pulse-${suffix}-${companyName.toLowerCase()}-${Date.now()}.pdf`;
+      const filename = `pulse-${suffix}-${companyName.toLowerCase().replace(/\s+/g, '-')}-${Date.now()}.pdf`;
       downloadPDF(blob, filename);
     } finally {
       setIsExporting(null);
     }
   };
 
-  // Smart suggestions for Ask Pulse
+  // Smart suggestions for Ask Pulse - dynamic based on actual data
   const smartSuggestions = synthesis ? [
-    { label: 'Why is Database Performance the top issue?', query: 'Why is Database Performance the top issue?' },
-    { label: 'What do users love most about the product?', query: 'What do users love most about the product?' },
-    { label: 'Compare this report to the previous analysis', query: 'Compare this report to the previous analysis' },
-    { label: 'What should we prioritize for Q1?', query: 'What should we prioritize for Q1?' },
+    {
+      label: `Why is ${synthesis.focusAreas[0]?.title || 'this'} the top issue?`,
+      query: `Why is ${synthesis.focusAreas[0]?.title || 'this'} the top issue?`
+    },
+    {
+      label: `What do users love most about ${companyName}?`,
+      query: `What do users love most about ${companyName}?`
+    },
+    {
+      label: 'Compare this report to the previous analysis',
+      query: 'Compare this report to the previous analysis'
+    },
+    {
+      label: 'What should we prioritize for Q1?',
+      query: 'What should we prioritize for Q1?'
+    },
   ] : [];
 
   // Generate simplified, action-oriented narrative
@@ -131,6 +174,9 @@ Brand strength is solid at ${synthesis.brandStrengths.overallScore}/10, driven b
     });
   };
 
+  // If no synthesis data is available, show empty state
+  const hasData = synthesis !== null;
+
   return (
     <TooltipProvider>
       <div className={`min-h-screen bg-background ${isDark ? 'dark' : ''}`}>
@@ -147,7 +193,14 @@ Brand strength is solid at ${synthesis.brandStrengths.overallScore}/10, driven b
                   <Activity className="w-6 h-6 text-primary" />
                 </div>
                 <div>
-                  <h1 className="text-lg font-semibold">Pulse</h1>
+                  <div className="flex items-center gap-2">
+                    <h1 className="text-lg font-semibold">Pulse</h1>
+                    {isDemoMode && (
+                      <span className="px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide rounded bg-primary/10 text-primary">
+                        Demo
+                      </span>
+                    )}
+                  </div>
                   <p className="text-xs text-muted-foreground">{companyName}</p>
                 </div>
               </div>
@@ -160,7 +213,7 @@ Brand strength is solid at ${synthesis.brandStrengths.overallScore}/10, driven b
                     variant="outline"
                     size="sm"
                     onClick={() => setIsExportMenuOpen(!isExportMenuOpen)}
-                    disabled={isExporting !== null || isLoading}
+                    disabled={isExporting !== null || !hasData}
                     className="gap-2"
                   >
                     {isExporting ? (
@@ -217,395 +270,380 @@ Brand strength is solid at ${synthesis.brandStrengths.overallScore}/10, driven b
 
         {/* Main Content */}
         <main className="max-w-6xl mx-auto px-6 py-8 xl:pl-48">
-          {/* Overview Section */}
-          <section id="overview" className="mb-12">
-            {isLoading ? (
-              <SkeletonHero />
-            ) : synthesis && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4 }}
-              >
-                {/* Hero Headline with Sentiment on Right */}
-                <div className="flex items-start justify-between mb-2">
-                  <h2 className="hero-headline">{heroHeadline}</h2>
-                  <div className="text-right flex-shrink-0 ml-4">
-                    <span className="text-2xl font-bold text-foreground">
-                      {synthesis.sentiment.positive}%
-                    </span>
-                    <p className="text-xs text-muted-foreground">positive sentiment</p>
+          {/* Show empty state if no data */}
+          {!hasData ? (
+            <EmptyState companyName={companyName} />
+          ) : (
+            <>
+              {/* Overview Section */}
+              <section id="overview" className="mb-12">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  {/* Hero Headline with Sentiment on Right */}
+                  <div className="flex items-start justify-between mb-2">
+                    <h2 className="hero-headline">{heroHeadline}</h2>
+                    <div className="text-right flex-shrink-0 ml-4">
+                      <span className="text-2xl font-bold text-foreground">
+                        {synthesis.sentiment.positive}%
+                      </span>
+                      <p className="text-xs text-muted-foreground">positive sentiment</p>
+                    </div>
                   </div>
-                </div>
 
-                {/* Metadata Anchor */}
-                <div className="flex items-center gap-2 text-xs text-muted-foreground mb-6">
-                  <span>{reportType}</span>
-                  <span className="text-border">•</span>
-                  <span className="flex items-center gap-1">
-                    <Clock className="w-3 h-3" />
-                    Last updated: {formatLastUpdated()}
-                  </span>
-                  <span className="text-border">•</span>
-                  <span>Data from last {dataTimeframe}</span>
-                </div>
+                  {/* Metadata Anchor */}
+                  <div className="flex items-center gap-2 text-xs text-muted-foreground mb-6">
+                    <span>{reportType}</span>
+                    <span className="text-border">•</span>
+                    <span className="flex items-center gap-1">
+                      <Clock className="w-3 h-3" />
+                      Last updated: {formatLastUpdated()}
+                    </span>
+                    <span className="text-border">•</span>
+                    <span>Data from last {dataTimeframe}</span>
+                  </div>
 
-                {/* Key Metrics Grid - FIRST (before narrative) */}
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
-                  {[
-                    { label: 'Total Analyzed', value: synthesis.metadata.totalAnalyzed, hasTooltip: false },
-                    { label: 'High Signal', value: synthesis.metadata.highSignalCount, hasTooltip: false },
-                    { label: 'Focus Areas', value: synthesis.focusAreas.length, hasTooltip: false },
-                    { label: 'Brand Score', value: synthesis.brandStrengths.overallScore, hasTooltip: true },
-                  ].map((stat, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.1 + i * 0.05 }}
+                  {/* Key Metrics Grid - FIRST (before narrative) */}
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+                    {[
+                      { label: 'Total Analyzed', value: synthesis.metadata.totalAnalyzed, hasTooltip: false },
+                      { label: 'High Signal', value: synthesis.metadata.highSignalCount, hasTooltip: false },
+                      { label: 'Focus Areas', value: synthesis.focusAreas.length, hasTooltip: false },
+                      { label: 'Brand Score', value: synthesis.brandStrengths.overallScore, hasTooltip: true },
+                    ].map((stat, i) => (
+                      <motion.div
+                        key={i}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.1 + i * 0.05 }}
+                      >
+                        <GlassCard hover={false} animate={false} className="text-center py-4">
+                          {stat.hasTooltip ? (
+                            <Tooltip>
+                              <TooltipTrigger asChild>
+                                <div className="cursor-help">
+                                  <p className="text-2xl font-bold text-foreground">
+                                    {stat.value}<span className="text-lg text-muted-foreground">/10</span>
+                                  </p>
+                                  <p className="text-xs text-muted-foreground">{stat.label}</p>
+                                </div>
+                              </TooltipTrigger>
+                              <TooltipContent side="top" className="glass-panel p-4 max-w-xs">
+                                <div className="space-y-3">
+                                  <p className="font-semibold text-foreground">Brand Score Calculation</p>
+                                  <div className="space-y-2 text-sm">
+                                    <div className="flex justify-between">
+                                      <span className="text-muted-foreground">Frequency weight</span>
+                                      <span className="font-mono">× 0.4</span>
+                                    </div>
+                                    <div className="flex justify-between">
+                                      <span className="text-muted-foreground">Sentiment weight</span>
+                                      <span className="font-mono">× 0.3</span>
+                                    </div>
+                                    <div className="flex justify-between">
+                                      <span className="text-muted-foreground">Velocity weight</span>
+                                      <span className="font-mono">× 0.3</span>
+                                    </div>
+                                  </div>
+                                  <div className="pt-2 border-t border-border">
+                                    <p className="text-xs font-mono text-muted-foreground">
+                                      Score = (F×0.4) + (S×0.3) + (V×0.3)
+                                    </p>
+                                  </div>
+                                </div>
+                              </TooltipContent>
+                            </Tooltip>
+                          ) : (
+                            <>
+                              <p className="text-2xl font-bold text-foreground">{stat.value}</p>
+                              <p className="text-xs text-muted-foreground">{stat.label}</p>
+                            </>
+                          )}
+                        </GlassCard>
+                      </motion.div>
+                    ))}
+                  </div>
+
+                  {/* Simplified Collapsible Narrative - AFTER metrics */}
+                  <div className="max-w-3xl mt-8">
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={isNarrativeExpanded ? 'full' : 'brief'}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        <p className="narrative-text whitespace-pre-line">
+                          {isNarrativeExpanded ? narrative.full : narrative.brief}
+                        </p>
+                      </motion.div>
+                    </AnimatePresence>
+                    <button
+                      onClick={() => setIsNarrativeExpanded(!isNarrativeExpanded)}
+                      className="flex items-center gap-1 mt-3 text-sm text-primary hover:text-primary/80 transition-colors"
                     >
-                      <GlassCard hover={false} animate={false} className="text-center py-4">
-                        {stat.hasTooltip ? (
+                      {isNarrativeExpanded ? (
+                        <>
+                          <ChevronUp className="w-4 h-4" />
+                          Show less
+                        </>
+                      ) : (
+                        <>
+                          <ChevronDown className="w-4 h-4" />
+                          Show full narrative
+                        </>
+                      )}
+                    </button>
+                  </div>
+                </motion.div>
+              </section>
+
+              {/* Focus Areas Section */}
+              <section id="focus-areas" className="mb-12">
+                <div className="flex items-center justify-between mb-6">
+                  <h2 className="text-section-header">Focus Areas</h2>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <span className="text-section-meta cursor-help">
+                        Impact = (R×0.4) + (S×0.3) + (V×0.3)
+                      </span>
+                    </TooltipTrigger>
+                    <TooltipContent side="left" className="max-w-xs">
+                      <div className="space-y-2">
+                        <p className="font-medium">Impact Score Formula</p>
+                        <ul className="text-xs text-muted-foreground space-y-1">
+                          <li>R = Reach (upvotes + comments)</li>
+                          <li>S = Sentiment intensity</li>
+                          <li>V = Velocity (engagement/time)</li>
+                        </ul>
+                      </div>
+                    </TooltipContent>
+                  </Tooltip>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {synthesis.focusAreas.map((area, i) => (
+                    <FocusAreaCard
+                      key={area.id}
+                      focusArea={area}
+                      index={i}
+                      onAskPulse={handleAskPulse}
+                    />
+                  ))}
+                </div>
+              </section>
+
+              {/* What Users Love Section */}
+              <section id="love" className="mb-12">
+                <h2 className="text-section-header mb-6">What Users Love</h2>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                >
+                  <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary/10 via-primary/5 to-transparent border border-primary/20">
+                    {/* Badge */}
+                    <div className="absolute top-4 right-4">
+                      <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary/20 text-primary text-xs font-medium">
+                        <Award className="w-3.5 h-3.5" />
+                        Brand Strength
+                      </div>
+                    </div>
+
+                    <div className="p-6">
+                      {/* Header with Brand Score Tooltip */}
+                      <div className="flex items-center gap-3 mb-6">
+                        <div className="p-3 rounded-xl bg-primary/10">
+                          <Heart className="w-6 h-6 text-primary" />
+                        </div>
+                        <div>
                           <Tooltip>
                             <TooltipTrigger asChild>
-                              <div className="cursor-help">
-                                <p className="text-2xl font-bold text-foreground">
-                                  {stat.value}<span className="text-lg text-muted-foreground">/10</span>
-                                </p>
-                                <p className="text-xs text-muted-foreground">{stat.label}</p>
+                              <div className="flex items-baseline gap-2 cursor-help">
+                                <span className="text-display text-primary">
+                                  {synthesis.brandStrengths.overallScore}
+                                </span>
+                                <span className="text-xl text-muted-foreground">/10</span>
                               </div>
                             </TooltipTrigger>
-                            <TooltipContent side="top" className="glass-panel p-4 max-w-xs">
+                            <TooltipContent side="right" className="glass-panel p-4 max-w-xs">
                               <div className="space-y-3">
-                                <p className="font-semibold text-foreground">Brand Score Calculation</p>
+                                <p className="font-semibold text-foreground">Brand Score Breakdown</p>
                                 <div className="space-y-2 text-sm">
                                   <div className="flex justify-between">
-                                    <span className="text-muted-foreground">Frequency weight</span>
+                                    <span className="text-muted-foreground">Frequency</span>
                                     <span className="font-mono">× 0.4</span>
                                   </div>
                                   <div className="flex justify-between">
-                                    <span className="text-muted-foreground">Sentiment weight</span>
+                                    <span className="text-muted-foreground">Sentiment</span>
                                     <span className="font-mono">× 0.3</span>
                                   </div>
                                   <div className="flex justify-between">
-                                    <span className="text-muted-foreground">Velocity weight</span>
+                                    <span className="text-muted-foreground">Velocity</span>
                                     <span className="font-mono">× 0.3</span>
                                   </div>
                                 </div>
-                                <div className="pt-2 border-t border-border">
-                                  <p className="text-xs font-mono text-muted-foreground">
-                                    Score = (F×0.4) + (S×0.3) + (V×0.3)
-                                  </p>
-                                </div>
+                                <p className="text-xs font-mono text-muted-foreground pt-2 border-t border-border">
+                                  Score = (F×0.4) + (S×0.3) + (V×0.3)
+                                </p>
                               </div>
                             </TooltipContent>
                           </Tooltip>
-                        ) : (
-                          <>
-                            <p className="text-2xl font-bold text-foreground">{stat.value}</p>
-                            <p className="text-xs text-muted-foreground">{stat.label}</p>
-                          </>
-                        )}
-                      </GlassCard>
-                    </motion.div>
-                  ))}
-                </div>
-
-                {/* Simplified Collapsible Narrative - AFTER metrics */}
-                <div className="max-w-3xl mt-8">
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={isNarrativeExpanded ? 'full' : 'brief'}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <p className="narrative-text whitespace-pre-line">
-                        {isNarrativeExpanded ? narrative.full : narrative.brief}
-                      </p>
-                    </motion.div>
-                  </AnimatePresence>
-                  <button
-                    onClick={() => setIsNarrativeExpanded(!isNarrativeExpanded)}
-                    className="flex items-center gap-1 mt-3 text-sm text-primary hover:text-primary/80 transition-colors"
-                  >
-                    {isNarrativeExpanded ? (
-                      <>
-                        <ChevronUp className="w-4 h-4" />
-                        Show less
-                      </>
-                    ) : (
-                      <>
-                        <ChevronDown className="w-4 h-4" />
-                        Show full narrative
-                      </>
-                    )}
-                  </button>
-                </div>
-              </motion.div>
-            )}
-          </section>
-
-          {/* Focus Areas Section */}
-          <section id="focus-areas" className="mb-12">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-section-header">Focus Areas</h2>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <span className="text-section-meta cursor-help">
-                    Impact = (R×0.4) + (S×0.3) + (V×0.3)
-                  </span>
-                </TooltipTrigger>
-                <TooltipContent side="left" className="max-w-xs">
-                  <div className="space-y-2">
-                    <p className="font-medium">Impact Score Formula</p>
-                    <ul className="text-xs text-muted-foreground space-y-1">
-                      <li>R = Reach (upvotes + comments)</li>
-                      <li>S = Sentiment intensity</li>
-                      <li>V = Velocity (engagement/time)</li>
-                    </ul>
-                  </div>
-                </TooltipContent>
-              </Tooltip>
-            </div>
-
-            {isLoading ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <SkeletonCard key={i} />
-                ))}
-              </div>
-            ) : synthesis && (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {synthesis.focusAreas.map((area, i) => (
-                  <FocusAreaCard
-                    key={area.id}
-                    focusArea={area}
-                    index={i}
-                    onAskPulse={handleAskPulse}
-                  />
-                ))}
-              </div>
-            )}
-          </section>
-
-          {/* What Users Love Section */}
-          <section id="love" className="mb-12">
-            <h2 className="text-section-header mb-6">What Users Love</h2>
-
-            {isLoading ? (
-              <SkeletonCard className="h-64" />
-            ) : synthesis && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-              >
-                <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary/10 via-primary/5 to-transparent border border-primary/20">
-                  {/* Badge */}
-                  <div className="absolute top-4 right-4">
-                    <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary/20 text-primary text-xs font-medium">
-                      <Award className="w-3.5 h-3.5" />
-                      Brand Strength
-                    </div>
-                  </div>
-
-                  <div className="p-6">
-                    {/* Header with Brand Score Tooltip */}
-                    <div className="flex items-center gap-3 mb-6">
-                      <div className="p-3 rounded-xl bg-primary/10">
-                        <Heart className="w-6 h-6 text-primary" />
+                          <p className="text-sm text-muted-foreground">
+                            {synthesis.brandStrengths.brandPersonality.join(' • ')}
+                          </p>
+                        </div>
                       </div>
-                      <div>
-                        <Tooltip>
-                          <TooltipTrigger asChild>
-                            <div className="flex items-baseline gap-2 cursor-help">
-                              <span className="text-display text-primary">
-                                {synthesis.brandStrengths.overallScore}
-                              </span>
-                              <span className="text-xl text-muted-foreground">/10</span>
-                            </div>
-                          </TooltipTrigger>
-                          <TooltipContent side="right" className="glass-panel p-4 max-w-xs">
-                            <div className="space-y-3">
-                              <p className="font-semibold text-foreground">Brand Score Breakdown</p>
-                              <div className="space-y-2 text-sm">
-                                <div className="flex justify-between">
-                                  <span className="text-muted-foreground">Frequency</span>
-                                  <span className="font-mono">× 0.4</span>
-                                </div>
-                                <div className="flex justify-between">
-                                  <span className="text-muted-foreground">Sentiment</span>
-                                  <span className="font-mono">× 0.3</span>
-                                </div>
-                                <div className="flex justify-between">
-                                  <span className="text-muted-foreground">Velocity</span>
-                                  <span className="font-mono">× 0.3</span>
+
+                      {/* Top Loves */}
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        {synthesis.brandStrengths.topLoves.map((love, i) => (
+                          <motion.div
+                            key={i}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.3 + i * 0.1 }}
+                            className="glass-subtle rounded-xl p-4"
+                          >
+                            <div className="flex items-start gap-3">
+                              <Quote className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
+                              <div className="flex-1">
+                                <p className="text-sm font-semibold text-foreground mb-1">{love.feature}</p>
+                                <p className="text-sm text-muted-foreground italic line-clamp-3">
+                                  "{love.quote}"
+                                </p>
+                                <div className="flex items-center gap-1 mt-3">
+                                  {Array.from({ length: 5 }).map((_, j) => (
+                                    <Star
+                                      key={j}
+                                      className={`w-3.5 h-3.5 ${
+                                        j < Math.round(love.shareability / 2)
+                                          ? 'text-yellow-500 fill-yellow-500'
+                                          : 'text-muted'
+                                      }`}
+                                    />
+                                  ))}
+                                  <span className="ml-2 text-xs text-muted-foreground">
+                                    {love.shareability}/10
+                                  </span>
                                 </div>
                               </div>
-                              <p className="text-xs font-mono text-muted-foreground pt-2 border-t border-border">
-                                Score = (F×0.4) + (S×0.3) + (V×0.3)
-                              </p>
                             </div>
-                          </TooltipContent>
-                        </Tooltip>
-                        <p className="text-sm text-muted-foreground">
-                          {synthesis.brandStrengths.brandPersonality.join(' • ')}
-                        </p>
+                          </motion.div>
+                        ))}
                       </div>
                     </div>
+                  </div>
+                </motion.div>
+              </section>
 
-                    {/* Top Loves */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                      {synthesis.brandStrengths.topLoves.map((love, i) => (
+              {/* Expectation Gaps Section */}
+              <section id="gaps" className="mb-12">
+                <h2 className="text-section-header mb-6">Expectation Gaps</h2>
+
+                {synthesis.expectationGaps.length > 0 && (
+                  <GlassCard hover={false} animate={false}>
+                    <div className="divide-y divide-border/50">
+                      {synthesis.expectationGaps.map((gap, i) => (
                         <motion.div
                           key={i}
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.3 + i * 0.1 }}
-                          className="glass-subtle rounded-xl p-4"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ delay: i * 0.1 }}
+                          className="py-4 first:pt-0 last:pb-0"
                         >
-                          <div className="flex items-start gap-3">
-                            <Quote className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
+                          <div className="flex items-start gap-4">
                             <div className="flex-1">
-                              <p className="text-sm font-semibold text-foreground mb-1">{love.feature}</p>
-                              <p className="text-sm text-muted-foreground italic line-clamp-3">
-                                "{love.quote}"
-                              </p>
-                              <div className="flex items-center gap-1 mt-3">
-                                {Array.from({ length: 5 }).map((_, j) => (
-                                  <Star
-                                    key={j}
-                                    className={`w-3.5 h-3.5 ${
-                                      j < Math.round(love.shareability / 2)
-                                        ? 'text-yellow-500 fill-yellow-500'
-                                        : 'text-muted'
-                                    }`}
-                                  />
-                                ))}
-                                <span className="ml-2 text-xs text-muted-foreground">
-                                  {love.shareability}/10
+                              <div className="flex items-center gap-2 mb-2">
+                                <span
+                                  className="px-2 py-0.5 rounded-full text-xs font-semibold"
+                                  style={
+                                    gap.gapSeverity === 'High'
+                                      ? { backgroundColor: '#ffe8e8', color: '#d32f2f' }
+                                      : gap.gapSeverity === 'Medium'
+                                      ? { backgroundColor: '#fff3e0', color: '#e65100' }
+                                      : { backgroundColor: '#f1f8e9', color: '#558b2f' }
+                                  }
+                                >
+                                  {gap.gapSeverity}
                                 </span>
+                              </div>
+                              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div>
+                                  <p className="text-xs text-muted-foreground mb-1 uppercase tracking-wide">Users Expect</p>
+                                  <p className="text-sm text-foreground">{gap.expectation}</p>
+                                </div>
+                                <div>
+                                  <p className="text-xs text-muted-foreground mb-1 uppercase tracking-wide">Reality</p>
+                                  <p className="text-sm text-foreground">{gap.reality}</p>
+                                </div>
+                                <div>
+                                  <p className="text-xs text-muted-foreground mb-1 uppercase tracking-wide">Suggested Fix</p>
+                                  <p className="text-sm text-primary">{gap.suggestedFix}</p>
+                                </div>
                               </div>
                             </div>
                           </div>
                         </motion.div>
                       ))}
                     </div>
-                  </div>
-                </div>
-              </motion.div>
-            )}
-          </section>
+                  </GlassCard>
+                )}
+              </section>
 
-          {/* Expectation Gaps Section */}
-          <section id="gaps" className="mb-12">
-            <h2 className="text-section-header mb-6">Expectation Gaps</h2>
+              {/* Next Moves (OKRs) Section */}
+              <section id="next-moves" className="mb-12">
+                <h2 className="text-section-header mb-6">Next Moves</h2>
 
-            {isLoading ? (
-              <SkeletonCard className="h-48" />
-            ) : synthesis && synthesis.expectationGaps.length > 0 && (
-              <GlassCard hover={false} animate={false}>
-                <div className="divide-y divide-border/50">
-                  {synthesis.expectationGaps.map((gap, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: i * 0.1 }}
-                      className="py-4 first:pt-0 last:pb-0"
-                    >
-                      <div className="flex items-start gap-4">
-                        <div className="flex-1">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                >
+                  <GlassCard hover={false} animate={false}>
+                    <div className="flex items-center gap-2 mb-6">
+                      <Target className="w-5 h-5 text-primary" />
+                      <h3 className="text-title">AI-Generated OKRs</h3>
+                    </div>
+
+                    <div className="space-y-4">
+                      {synthesis.suggestedOKRs.map((okr, i) => (
+                        <motion.div
+                          key={i}
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.4 + i * 0.1 }}
+                          className="p-4 rounded-xl bg-muted/30 border border-border/50"
+                        >
                           <div className="flex items-center gap-2 mb-2">
-                            <span
-                              className="px-2 py-0.5 rounded-full text-xs font-semibold"
-                              style={
-                                gap.gapSeverity === 'High'
-                                  ? { backgroundColor: '#ffe8e8', color: '#d32f2f' }
-                                  : gap.gapSeverity === 'Medium'
-                                  ? { backgroundColor: '#fff3e0', color: '#e65100' }
-                                  : { backgroundColor: '#f1f8e9', color: '#558b2f' }
-                              }
-                            >
-                              {gap.gapSeverity}
+                            <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-xs font-medium">
+                              {okr.timeframe}
                             </span>
+                            <span className="text-sm font-medium text-muted-foreground">{okr.theme}</span>
                           </div>
-                          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <div>
-                              <p className="text-xs text-muted-foreground mb-1 uppercase tracking-wide">Users Expect</p>
-                              <p className="text-sm text-foreground">{gap.expectation}</p>
-                            </div>
-                            <div>
-                              <p className="text-xs text-muted-foreground mb-1 uppercase tracking-wide">Reality</p>
-                              <p className="text-sm text-foreground">{gap.reality}</p>
-                            </div>
-                            <div>
-                              <p className="text-xs text-muted-foreground mb-1 uppercase tracking-wide">Suggested Fix</p>
-                              <p className="text-sm text-primary">{gap.suggestedFix}</p>
-                            </div>
+
+                          <p className="font-semibold text-foreground mb-3">{okr.objective}</p>
+
+                          <div className="space-y-2">
+                            {okr.keyResults.map((kr, j) => (
+                              <div key={j} className="flex items-start gap-2 text-sm text-muted-foreground">
+                                <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                                <span>{kr}</span>
+                              </div>
+                            ))}
                           </div>
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </GlassCard>
-            )}
-          </section>
-
-          {/* Next Moves (OKRs) Section */}
-          <section id="next-moves" className="mb-12">
-            <h2 className="text-section-header mb-6">Next Moves</h2>
-
-            {isLoading ? (
-              <SkeletonCard className="h-64" />
-            ) : synthesis && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-              >
-                <GlassCard hover={false} animate={false}>
-                  <div className="flex items-center gap-2 mb-6">
-                    <Target className="w-5 h-5 text-primary" />
-                    <h3 className="text-title">AI-Generated OKRs</h3>
-                  </div>
-
-                  <div className="space-y-4">
-                    {synthesis.suggestedOKRs.map((okr, i) => (
-                      <motion.div
-                        key={i}
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.4 + i * 0.1 }}
-                        className="p-4 rounded-xl bg-muted/30 border border-border/50"
-                      >
-                        <div className="flex items-center gap-2 mb-2">
-                          <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-xs font-medium">
-                            {okr.timeframe}
-                          </span>
-                          <span className="text-sm font-medium text-muted-foreground">{okr.theme}</span>
-                        </div>
-
-                        <p className="font-semibold text-foreground mb-3">{okr.objective}</p>
-
-                        <div className="space-y-2">
-                          {okr.keyResults.map((kr, j) => (
-                            <div key={j} className="flex items-start gap-2 text-sm text-muted-foreground">
-                              <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                              <span>{kr}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
-                </GlassCard>
-              </motion.div>
-            )}
-          </section>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </GlassCard>
+                </motion.div>
+              </section>
+            </>
+          )}
         </main>
 
         {/* Footer */}
@@ -618,11 +656,13 @@ Brand strength is solid at ${synthesis.brandStrengths.overallScore}/10, driven b
           </div>
         </footer>
 
-        {/* Ask Pulse Floating Button */}
-        <AskPulseButton
-          isOpen={isAskPulseOpen}
-          onToggle={() => setIsAskPulseOpen(!isAskPulseOpen)}
-        />
+        {/* Ask Pulse Floating Button - only show if we have data */}
+        {hasData && (
+          <AskPulseButton
+            isOpen={isAskPulseOpen}
+            onToggle={() => setIsAskPulseOpen(!isAskPulseOpen)}
+          />
+        )}
 
         {/* Ask Pulse Side Panel */}
         <AskPulsePanel

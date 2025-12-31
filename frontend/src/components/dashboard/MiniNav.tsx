@@ -30,20 +30,40 @@ export function MiniNav() {
       const sections = navItems.map(item => ({
         id: item.id,
         element: document.getElementById(item.id),
-      }));
+      })).filter(s => s.element);
 
-      const scrollPosition = window.scrollY + 120;
+      if (sections.length === 0) return;
+
+      // Check if user has scrolled to the bottom of the page
+      const scrolledToBottom =
+        window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50;
+
+      if (scrolledToBottom) {
+        // If at the bottom, activate the last section
+        setActiveSection(sections[sections.length - 1].id);
+        return;
+      }
+
+      // Find the section currently in view
+      const viewportTop = 150; // Offset from top of viewport
 
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = sections[i];
-        if (section.element && section.element.offsetTop <= scrollPosition) {
-          setActiveSection(section.id);
-          break;
+        if (section.element) {
+          const rect = section.element.getBoundingClientRect();
+          if (rect.top <= viewportTop) {
+            setActiveSection(section.id);
+            return;
+          }
         }
       }
+
+      // Default to first section if none found
+      setActiveSection(sections[0].id);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Call once on mount
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 

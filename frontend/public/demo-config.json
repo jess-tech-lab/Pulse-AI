@@ -1,0 +1,1614 @@
+{
+  "companyName": "Starbucks",
+  "synthesis": {
+    "summaries": {
+      "tldr": "Starbucks faces usability friction primarily in beverage quality and employee-related issues, with no critical issues but consistent low-impact concerns.",
+      "highlights": [
+        "Beverage quality issues noted with a chemical taste in certain drinks.",
+        "Employee discount and benefits policies are causing usability friction.",
+        "Equipment maintenance, specifically broken machines, is a recurring issue.",
+        "Training platform and hiring process need improvements for better usability.",
+        "Product availability and information are areas of concern for users."
+      ],
+      "executiveBrief": "The analysis of recent feedback for Starbucks reveals a consistent theme of usability friction across various operational aspects, particularly concerning beverage quality and employee-related issues. While no critical issues were identified, the recurring low-impact concerns suggest a need for strategic improvements to enhance user and employee satisfaction. Beverage quality, specifically the taste of certain drinks, has been highlighted as a problem, potentially affecting customer perception. Additionally, employee discount policies, benefits, and training platforms are areas where usability friction is evident, indicating a need for policy review and better resource allocation. Equipment maintenance, particularly the timely repair of machines, is another area requiring attention to prevent operational disruptions. Addressing these issues could improve overall satisfaction and operational efficiency, aligning with Starbucks' commitment to quality and employee welfare."
+    },
+    "sentiment": {
+      "positive": 4,
+      "neutral": 14,
+      "negative": 29,
+      "mood": "Stable",
+      "moodExplanation": "The sentiment is stable with a majority of feedback being constructive, indicating areas for improvement without critical issues causing immediate concern."
+    },
+    "focusAreas": [
+      {
+        "id": "1",
+        "title": "Beverage Quality",
+        "category": "usability_friction",
+        "items": [
+          {
+            "type": "Constructive",
+            "category": "Usability Friction",
+            "problemMetadata": {
+              "rootCause": "Trust",
+              "featureArea": "Beverage Quality",
+              "impactType": "Brand Trust",
+              "urgencySignal": "High",
+              "prioritization": {
+                "impactScore": 8,
+                "urgencyScore": 7,
+                "effortEstimate": 2
+              }
+            },
+            "delightMetadata": null,
+            "summary": {
+              "actionableInsight": "Investigate the beverage preparation process during the holiday season to ensure consistency in taste and quality.",
+              "replyDraft": "Thank you for sharing your experience! We take feedback like this seriously and will look into the beverage preparation process during the holiday season to ensure our iced drinks maintain their quality. Your input helps us improve!",
+              "keyQuote": "the iced cinnamon dolce and iced vanilla lattes taste completely different - almost a chemical/plastic taste."
+            },
+            "confidence": 0.85,
+            "reasoning": "The feedback expresses a clear issue with the taste of iced drinks during the holiday season, indicating a usability friction related to beverage quality. The user is concerned about consistency and potential contamination, which relates to trust in the product.",
+            "sourceUrl": "https://www.reddit.com/r/starbucks/comments/1q0j7je/iced_drinks_in_december/",
+            "sourceId": "1q0j7je",
+            "originalTitle": "Iced Drinks in December",
+            "signalScore": 0.5999999999999999,
+            "impactData": {
+              "score": 2.1,
+              "maxScore": 10,
+              "breakdown": {
+                "reach": {
+                  "value": 0,
+                  "weight": 0.4
+                },
+                "sentiment": {
+                  "value": 7,
+                  "weight": 0.3
+                },
+                "velocity": {
+                  "value": 0,
+                  "weight": 0.3
+                }
+              },
+              "rationale": "Score based on standard engagement metrics.",
+              "stakes": {
+                "type": "risk",
+                "message": "Risk if ignored: Continued user frustration, possible support ticket increase."
+              }
+            }
+          },
+          {
+            "type": "Constructive",
+            "category": "Support Question",
+            "problemMetadata": {
+              "rootCause": "Trust",
+              "featureArea": "Beverage Quality",
+              "impactType": "Brand Trust",
+              "urgencySignal": "High",
+              "prioritization": {
+                "impactScore": 8,
+                "urgencyScore": 9,
+                "effortEstimate": 2
+              }
+            },
+            "delightMetadata": null,
+            "summary": {
+              "actionableInsight": "Investigate beverage quality control processes to prevent issues like curdled milk.",
+              "replyDraft": "Hi there! We're really sorry to hear about your experience with your latte. It sounds concerning, and we appreciate you bringing it to our attention. Please reach out to our customer service so we can assist you further and ensure this doesn’t happen again!",
+              "keyQuote": "I drank 70% of the coffee before discovering these chunks."
+            },
+            "confidence": 0.85,
+            "reasoning": "The feedback clearly indicates a concern about the quality of the drink, specifically mentioning curdled milk and potential health implications. This falls under a support question as the user is seeking clarification and help regarding their experience.",
+            "sourceUrl": "https://www.reddit.com/gallery/1pzup9x",
+            "sourceId": "1pzup9x",
+            "originalTitle": "What’s wrong with my Starbucks drink?",
+            "signalScore": 0.5999999999999999,
+            "impactData": {
+              "score": 2.1,
+              "maxScore": 10,
+              "breakdown": {
+                "reach": {
+                  "value": 0,
+                  "weight": 0.4
+                },
+                "sentiment": {
+                  "value": 7,
+                  "weight": 0.3
+                },
+                "velocity": {
+                  "value": 0,
+                  "weight": 0.3
+                }
+              },
+              "rationale": "Score based on standard engagement metrics.",
+              "stakes": {
+                "type": "risk",
+                "message": "Risk if ignored: Continued user frustration, possible support ticket increase."
+              }
+            }
+          }
+        ],
+        "totalScore": 4.2,
+        "quotes": [
+          "the iced cinnamon dolce and iced vanilla lattes taste completely different - almost a chemical/plastic taste.",
+          "I drank 70% of the coffee before discovering these chunks."
+        ],
+        "segments": {},
+        "frequency": 2,
+        "avgImpact": 2.1,
+        "topQuote": "\"the iced cinnamon dolce and iced vanilla lattes taste completely different - almost a chemical/plastic taste.\"",
+        "affectedSegments": [],
+        "stakes": {
+          "type": "risk",
+          "message": "Risk if ignored: Continued user frustration, possible support ticket increase."
+        },
+        "scoreRationale": "Score based on standard engagement metrics.",
+        "severityLabel": "Medium",
+        "rootCause": "Potential inconsistencies in ingredient sourcing or preparation methods.",
+        "impactScore": 2.1,
+        "trend": "new",
+        "trendDelta": 0
+      },
+      {
+        "id": "2",
+        "title": "Product Availability",
+        "category": "usability_friction",
+        "items": [
+          {
+            "type": "Constructive",
+            "category": "Support Question",
+            "problemMetadata": {
+              "rootCause": "Ease",
+              "featureArea": "Product Availability",
+              "impactType": "Brand Trust",
+              "urgencySignal": "High",
+              "prioritization": {
+                "impactScore": 7,
+                "urgencyScore": 8,
+                "effortEstimate": 2
+              }
+            },
+            "delightMetadata": null,
+            "summary": {
+              "actionableInsight": "Investigate options for re-releasing popular vintage merchandise to enhance customer loyalty.",
+              "replyDraft": "Hi there! We're sorry to hear about the broken glass. While we can't guarantee availability, we recommend checking our official merchandise store or contacting customer service for assistance. We appreciate your dedication to making it up to your partner!",
+              "keyQuote": "I just want to make it up to her :|"
+            },
+            "confidence": 0.85,
+            "reasoning": "The feedback is a support question as the user is seeking help to find a specific product. The underlying need is ease, as they want a straightforward way to replace the broken item. The urgency is high due to the emotional context.",
+            "sourceUrl": "https://www.reddit.com/r/starbucks/comments/1q0ijxd/broke_my_partners_favorite_starbucks_glass_circa/",
+            "sourceId": "1q0ijxd",
+            "originalTitle": "Broke my partner's favorite Starbucks glass (circa 2012–2014), help!!",
+            "signalScore": 0.5999999999999999,
+            "impactData": {
+              "score": 2.1,
+              "maxScore": 10,
+              "breakdown": {
+                "reach": {
+                  "value": 0,
+                  "weight": 0.4
+                },
+                "sentiment": {
+                  "value": 7,
+                  "weight": 0.3
+                },
+                "velocity": {
+                  "value": 0,
+                  "weight": 0.3
+                }
+              },
+              "rationale": "Score based on standard engagement metrics.",
+              "stakes": {
+                "type": "risk",
+                "message": "Risk if ignored: Continued user frustration, possible support ticket increase."
+              }
+            }
+          }
+        ],
+        "totalScore": 2.1,
+        "quotes": [
+          "I just want to make it up to her :|"
+        ],
+        "segments": {},
+        "frequency": 1,
+        "avgImpact": 2.1,
+        "topQuote": "\"Do the danishes really have a shelf life of 2 months?\"",
+        "affectedSegments": [],
+        "stakes": {
+          "type": "risk",
+          "message": "Risk if ignored: Continued user frustration, possible support ticket increase."
+        },
+        "scoreRationale": "Score based on standard engagement metrics.",
+        "severityLabel": "Medium",
+        "rootCause": "Supply chain or inventory management issues.",
+        "impactScore": 2.1,
+        "trend": "new",
+        "trendDelta": 0
+      },
+      {
+        "id": "3",
+        "title": "Employee Discount Policy",
+        "category": "usability_friction",
+        "items": [
+          {
+            "type": "Constructive",
+            "category": "Support Question",
+            "problemMetadata": {
+              "rootCause": "Certainty",
+              "featureArea": "Employee Discount Policy",
+              "impactType": "Brand Trust",
+              "urgencySignal": "High",
+              "prioritization": {
+                "impactScore": 7,
+                "urgencyScore": 8,
+                "effortEstimate": 2
+              }
+            },
+            "delightMetadata": null,
+            "summary": {
+              "actionableInsight": "Investigate clarifying the employee discount policy to ensure partners understand usage rules and avoid potential misuse.",
+              "replyDraft": "Hi there! It's great to see you engaging with the community as a new partner. Regarding your questions, it's best to check with your manager about the specifics of using partner numbers in different states and how many drinks you can order at once. They can provide the most accurate guidance to keep you in good standing. Welcome to the team!",
+              "keyQuote": "I don’t wanna get in trouble 😭"
+            },
+            "confidence": 0.85,
+            "reasoning": "The feedback expresses uncertainty about the use of partner numbers and concerns about potential repercussions, indicating a need for clarity in the employee discount policy. The user is seeking guidance, which aligns with the Support Question category.",
+            "sourceUrl": "https://www.reddit.com/r/starbucks/comments/1q0hyp5/partner_numbers_for_discount/",
+            "sourceId": "1q0hyp5",
+            "originalTitle": "Partner Numbers for Discount",
+            "signalScore": 0.5999999999999999,
+            "impactData": {
+              "score": 2.1,
+              "maxScore": 10,
+              "breakdown": {
+                "reach": {
+                  "value": 0,
+                  "weight": 0.4
+                },
+                "sentiment": {
+                  "value": 7,
+                  "weight": 0.3
+                },
+                "velocity": {
+                  "value": 0,
+                  "weight": 0.3
+                }
+              },
+              "rationale": "Score based on standard engagement metrics.",
+              "stakes": {
+                "type": "risk",
+                "message": "Risk if ignored: Continued user frustration, possible support ticket increase."
+              }
+            }
+          }
+        ],
+        "totalScore": 2.1,
+        "quotes": [
+          "I don’t wanna get in trouble 😭"
+        ],
+        "segments": {},
+        "frequency": 1,
+        "avgImpact": 2.1,
+        "topQuote": "\"There is no reason for me to double my work load and get nothing in return.\"",
+        "affectedSegments": [],
+        "stakes": {
+          "type": "risk",
+          "message": "Risk if ignored: Continued user frustration, possible support ticket increase."
+        },
+        "scoreRationale": "Score based on standard engagement metrics.",
+        "severityLabel": "Medium",
+        "rootCause": "Perceived unfairness or lack of clarity in policy implementation.",
+        "impactScore": 2.1,
+        "trend": "new",
+        "trendDelta": 0
+      },
+      {
+        "id": "4",
+        "title": "Training Platform",
+        "category": "usability_friction",
+        "items": [
+          {
+            "type": "Constructive",
+            "category": "Usability Friction",
+            "problemMetadata": {
+              "rootCause": "Ease",
+              "featureArea": "Training Platform",
+              "impactType": "Cost to Serve",
+              "urgencySignal": "Critical",
+              "prioritization": {
+                "impactScore": 8,
+                "urgencyScore": 9,
+                "effortEstimate": 3
+              }
+            },
+            "delightMetadata": null,
+            "summary": {
+              "actionableInsight": "Prioritize improving the training platform's reliability and customer support responsiveness.",
+              "replyDraft": "I'm really sorry to hear about the trouble you're having with the training platform. It sounds frustrating, especially when support isn't meeting your needs. We're here to help, and I'll make sure your feedback reaches the right team to improve this experience.",
+              "keyQuote": "Last time this happened customer support was terrible and honestly my manager is not super tech savvy."
+            },
+            "confidence": 0.95,
+            "reasoning": "The feedback indicates a struggle with the training platform, highlighting usability issues and poor customer support. The user's emotional response suggests a significant impact on their experience, classifying it as usability friction.",
+            "sourceUrl": "https://i.redd.it/hgj3zaabmkag1.jpeg",
+            "sourceId": "1q0htlw",
+            "originalTitle": "I give up",
+            "signalScore": 0.5999999999999999,
+            "impactData": {
+              "score": 2.1,
+              "maxScore": 10,
+              "breakdown": {
+                "reach": {
+                  "value": 0,
+                  "weight": 0.4
+                },
+                "sentiment": {
+                  "value": 7,
+                  "weight": 0.3
+                },
+                "velocity": {
+                  "value": 0,
+                  "weight": 0.3
+                }
+              },
+              "rationale": "Score based on standard engagement metrics.",
+              "stakes": {
+                "type": "risk",
+                "message": "Risk if ignored: Continued user frustration, possible support ticket increase."
+              }
+            }
+          }
+        ],
+        "totalScore": 2.1,
+        "quotes": [
+          "Last time this happened customer support was terrible and honestly my manager is not super tech savvy."
+        ],
+        "segments": {},
+        "frequency": 1,
+        "avgImpact": 2.1,
+        "topQuote": "\"Last time this happened customer support was terrible and honestly my manager is not super tech savvy.\"",
+        "affectedSegments": [],
+        "stakes": {
+          "type": "risk",
+          "message": "Risk if ignored: Continued user frustration, possible support ticket increase."
+        },
+        "scoreRationale": "Score based on standard engagement metrics.",
+        "severityLabel": "Medium",
+        "rootCause": "Insufficient training resources or outdated training methods.",
+        "impactScore": 2.1,
+        "trend": "new",
+        "trendDelta": 0
+      },
+      {
+        "id": "5",
+        "title": "Employee Benefits",
+        "category": "usability_friction",
+        "items": [
+          {
+            "type": "Constructive",
+            "category": "Support Question",
+            "problemMetadata": {
+              "rootCause": "Trust",
+              "featureArea": "Employee Benefits",
+              "impactType": "Retention",
+              "urgencySignal": "High",
+              "prioritization": {
+                "impactScore": 7,
+                "urgencyScore": 8,
+                "effortEstimate": 2
+              }
+            },
+            "delightMetadata": null,
+            "summary": {
+              "actionableInsight": "Investigate improving communication around sick time policies to enhance employee trust and well-being.",
+              "replyDraft": "We're sorry to hear you're feeling unwell. It's important to prioritize your health, and we encourage you to reach out to your manager about your sick time options. Your well-being matters to us!",
+              "keyQuote": "Should I risk it and get a write up or work?"
+            },
+            "confidence": 0.85,
+            "reasoning": "The feedback expresses a concern about using sick time and the potential consequences, indicating a need for clarity and support regarding sick leave policies. This falls under a Support Question as the user is seeking guidance.",
+            "sourceUrl": "https://www.reddit.com/r/starbucks/comments/1q0hohj/320_hours_of_sick_time/",
+            "sourceId": "1q0hohj",
+            "originalTitle": "3.20 hours of sick time",
+            "signalScore": 0.5999999999999999,
+            "impactData": {
+              "score": 2.1,
+              "maxScore": 10,
+              "breakdown": {
+                "reach": {
+                  "value": 0,
+                  "weight": 0.4
+                },
+                "sentiment": {
+                  "value": 7,
+                  "weight": 0.3
+                },
+                "velocity": {
+                  "value": 0,
+                  "weight": 0.3
+                }
+              },
+              "rationale": "Score based on standard engagement metrics.",
+              "stakes": {
+                "type": "risk",
+                "message": "Risk if ignored: Continued user frustration, possible support ticket increase."
+              }
+            }
+          }
+        ],
+        "totalScore": 2.1,
+        "quotes": [
+          "Should I risk it and get a write up or work?"
+        ],
+        "segments": {},
+        "frequency": 1,
+        "avgImpact": 2.1,
+        "topQuote": "\"It honestly doesn’t feel fair.\"",
+        "affectedSegments": [],
+        "stakes": {
+          "type": "risk",
+          "message": "Risk if ignored: Continued user frustration, possible support ticket increase."
+        },
+        "scoreRationale": "Score based on standard engagement metrics.",
+        "severityLabel": "Medium",
+        "rootCause": "Lack of transparency or perceived inequity in benefits distribution.",
+        "impactScore": 2.1,
+        "trend": "new",
+        "trendDelta": 0
+      },
+      {
+        "id": "6",
+        "title": "Drink Accessories",
+        "category": "usability_friction",
+        "items": [
+          {
+            "type": "Constructive",
+            "category": "Usability Friction",
+            "problemMetadata": {
+              "rootCause": "Ease",
+              "featureArea": "Drink Accessories",
+              "impactType": "Brand Trust",
+              "urgencySignal": "High",
+              "prioritization": {
+                "impactScore": 8,
+                "urgencyScore": 9,
+                "effortEstimate": 2
+              }
+            },
+            "delightMetadata": null,
+            "summary": {
+              "actionableInsight": "Prioritize improving the quality of straws to enhance user experience and brand perception.",
+              "replyDraft": "Thanks for your feedback! We're sorry to hear about your experience with the straws. We're always looking to improve, and your input is valuable as we strive to provide the best for our customers. We'll pass this along to the team!",
+              "keyQuote": "Why are they brittle and break easily into my drink?"
+            },
+            "confidence": 0.85,
+            "reasoning": "The feedback clearly expresses a usability issue with the new straws, indicating a struggle with the product's functionality. The user is seeking clarity and expressing dissatisfaction, which aligns with the 'Usability Friction' category.",
+            "sourceUrl": "https://www.reddit.com/r/starbucks/comments/1q0hefy/hey_quick_question_or_comment/",
+            "sourceId": "1q0hefy",
+            "originalTitle": "Hey quick question or comment!",
+            "signalScore": 0.5999999999999999,
+            "impactData": {
+              "score": 2.1,
+              "maxScore": 10,
+              "breakdown": {
+                "reach": {
+                  "value": 0,
+                  "weight": 0.4
+                },
+                "sentiment": {
+                  "value": 7,
+                  "weight": 0.3
+                },
+                "velocity": {
+                  "value": 0,
+                  "weight": 0.3
+                }
+              },
+              "rationale": "Score based on standard engagement metrics.",
+              "stakes": {
+                "type": "risk",
+                "message": "Risk if ignored: Continued user frustration, possible support ticket increase."
+              }
+            }
+          }
+        ],
+        "totalScore": 2.1,
+        "quotes": [
+          "Why are they brittle and break easily into my drink?"
+        ],
+        "segments": {},
+        "frequency": 1,
+        "avgImpact": 2.1,
+        "topQuote": "\"Why are they brittle and break easily into my drink?\"",
+        "affectedSegments": [],
+        "stakes": {
+          "type": "risk",
+          "message": "Risk if ignored: Continued user frustration, possible support ticket increase."
+        },
+        "scoreRationale": "Score based on standard engagement metrics.",
+        "severityLabel": "Medium",
+        "rootCause": "Quality control issues with suppliers.",
+        "impactScore": 2.1,
+        "trend": "new",
+        "trendDelta": 0
+      },
+      {
+        "id": "7",
+        "title": "Hiring Process",
+        "category": "usability_friction",
+        "items": [
+          {
+            "type": "Constructive",
+            "category": "Support Question",
+            "problemMetadata": {
+              "rootCause": "Certainty",
+              "featureArea": "Hiring Process",
+              "impactType": "Brand Trust",
+              "urgencySignal": "High",
+              "prioritization": {
+                "impactScore": 7,
+                "urgencyScore": 8,
+                "effortEstimate": 2
+              }
+            },
+            "delightMetadata": null,
+            "summary": {
+              "actionableInsight": "Investigate improving clarity in the hiring process communication to candidates.",
+              "replyDraft": "Hi there! Thanks for sharing your experience. It's understandable to feel uncertain about the background check process. We appreciate your interest in joining our team, and we'll make sure to clarify these steps for future candidates. Good luck, and we hope to see you soon!",
+              "keyQuote": "Weird because how are they going to conduct a background check I didn't give her any ID or my social how are they going to do a background check?"
+            },
+            "confidence": 0.85,
+            "reasoning": "The feedback expresses confusion about the hiring process, specifically regarding background checks, indicating a need for clearer communication. This falls under 'Support Question' as the user seeks clarification.",
+            "sourceUrl": "https://www.reddit.com/r/starbucks/comments/1q0gkmn/did_i_fail_the_interview/",
+            "sourceId": "1q0gkmn",
+            "originalTitle": "Did I Fail The Interview?",
+            "signalScore": 0.5999999999999999,
+            "impactData": {
+              "score": 2.1,
+              "maxScore": 10,
+              "breakdown": {
+                "reach": {
+                  "value": 0,
+                  "weight": 0.4
+                },
+                "sentiment": {
+                  "value": 7,
+                  "weight": 0.3
+                },
+                "velocity": {
+                  "value": 0,
+                  "weight": 0.3
+                }
+              },
+              "rationale": "Score based on standard engagement metrics.",
+              "stakes": {
+                "type": "risk",
+                "message": "Risk if ignored: Continued user frustration, possible support ticket increase."
+              }
+            }
+          },
+          {
+            "type": "Constructive",
+            "category": "Support Question",
+            "problemMetadata": {
+              "rootCause": "Certainty",
+              "featureArea": "Hiring Process",
+              "impactType": "Brand Trust",
+              "urgencySignal": "High",
+              "prioritization": {
+                "impactScore": 7,
+                "urgencyScore": 8,
+                "effortEstimate": 2
+              }
+            },
+            "delightMetadata": null,
+            "summary": {
+              "actionableInsight": "Prioritize improving communication in the hiring process to enhance candidate experience and brand trust.",
+              "replyDraft": "Hi there! I'm sorry to hear about your experience with the hiring process. It can be frustrating to feel ignored, especially after being told you'd hear back. I recommend reaching out to the location directly for an update on your application. Thank you for your patience during this busy season!",
+              "keyQuote": "I can’t help but feel ignored even though I was told they’d call."
+            },
+            "confidence": 0.85,
+            "reasoning": "The feedback expresses frustration about a lack of communication during the hiring process, indicating a need for clarity and responsiveness. This falls under Support Question as the user is seeking advice on how to proceed with their application.",
+            "sourceUrl": "https://www.reddit.com/r/starbucks/comments/1pzt8sd/getting_ignored/",
+            "sourceId": "1pzt8sd",
+            "originalTitle": "Getting ignored",
+            "signalScore": 0.5999999999999999,
+            "impactData": {
+              "score": 2.1,
+              "maxScore": 10,
+              "breakdown": {
+                "reach": {
+                  "value": 0,
+                  "weight": 0.4
+                },
+                "sentiment": {
+                  "value": 7,
+                  "weight": 0.3
+                },
+                "velocity": {
+                  "value": 0,
+                  "weight": 0.3
+                }
+              },
+              "rationale": "Score based on standard engagement metrics.",
+              "stakes": {
+                "type": "risk",
+                "message": "Risk if ignored: Continued user frustration, possible support ticket increase."
+              }
+            }
+          }
+        ],
+        "totalScore": 4.2,
+        "quotes": [
+          "Weird because how are they going to conduct a background check I didn't give her any ID or my social how are they going to do a background check?",
+          "I can’t help but feel ignored even though I was told they’d call."
+        ],
+        "segments": {},
+        "frequency": 2,
+        "avgImpact": 2.1,
+        "topQuote": "\"Weird because how are they going to conduct a background check I didn't give her any ID or my social how are they going to do a background check?\"",
+        "affectedSegments": [],
+        "stakes": {
+          "type": "risk",
+          "message": "Risk if ignored: Continued user frustration, possible support ticket increase."
+        },
+        "scoreRationale": "Score based on standard engagement metrics.",
+        "severityLabel": "Medium",
+        "rootCause": "Lack of clarity and communication in the hiring process.",
+        "impactScore": 2.1,
+        "trend": "new",
+        "trendDelta": 0
+      },
+      {
+        "id": "8",
+        "title": "Equipment Maintenance",
+        "category": "usability_friction",
+        "items": [
+          {
+            "type": "Constructive",
+            "category": "Usability Friction",
+            "problemMetadata": {
+              "rootCause": "Reliability",
+              "featureArea": "Equipment Maintenance",
+              "impactType": "Retention",
+              "urgencySignal": "Critical",
+              "prioritization": {
+                "impactScore": 9,
+                "urgencyScore": 10,
+                "effortEstimate": 3
+              }
+            },
+            "delightMetadata": null,
+            "summary": {
+              "actionableInsight": "Prioritize equipment maintenance and repair processes to ensure reliability during peak hours.",
+              "replyDraft": "Hi there! We understand how frustrating it can be when equipment breaks down, especially during busy times. We're working hard to expedite repairs and appreciate your patience as we resolve these issues. Thank you for bringing this to our attention!",
+              "keyQuote": "why in the worldddd can't we get our mastrena that has been broken since SATURDAY during peak fixed???"
+            },
+            "confidence": 0.95,
+            "reasoning": "The feedback clearly expresses frustration over broken equipment affecting service quality, indicating usability friction. The urgency and impact scores are high due to the critical nature of equipment reliability in a busy store.",
+            "sourceUrl": "https://www.reddit.com/r/starbucks/comments/1q0gg3h/why/",
+            "sourceId": "1q0gg3h",
+            "originalTitle": "why?",
+            "signalScore": 0.5999999999999999,
+            "impactData": {
+              "score": 2.1,
+              "maxScore": 10,
+              "breakdown": {
+                "reach": {
+                  "value": 0,
+                  "weight": 0.4
+                },
+                "sentiment": {
+                  "value": 7,
+                  "weight": 0.3
+                },
+                "velocity": {
+                  "value": 0,
+                  "weight": 0.3
+                }
+              },
+              "rationale": "Score based on standard engagement metrics.",
+              "stakes": {
+                "type": "risk",
+                "message": "Risk if ignored: Continued user frustration, possible support ticket increase."
+              }
+            }
+          }
+        ],
+        "totalScore": 2.1,
+        "quotes": [
+          "why in the worldddd can't we get our mastrena that has been broken since SATURDAY during peak fixed???"
+        ],
+        "segments": {},
+        "frequency": 1,
+        "avgImpact": 2.1,
+        "topQuote": "\"why in the worldddd can't we get our mastrena that has been broken since SATURDAY during peak fixed???\"",
+        "affectedSegments": [],
+        "stakes": {
+          "type": "risk",
+          "message": "Risk if ignored: Continued user frustration, possible support ticket increase."
+        },
+        "scoreRationale": "Score based on standard engagement metrics.",
+        "severityLabel": "Medium",
+        "rootCause": "Delayed response or inadequate maintenance protocols.",
+        "impactScore": 2.1,
+        "trend": "new",
+        "trendDelta": 0
+      },
+      {
+        "id": "9",
+        "title": "Beverage Options",
+        "category": "usability_friction",
+        "items": [
+          {
+            "type": "Constructive",
+            "category": "Support Question",
+            "problemMetadata": {
+              "rootCause": "Ease",
+              "featureArea": "Beverage Options",
+              "impactType": "Retention",
+              "urgencySignal": "High",
+              "prioritization": {
+                "impactScore": 7,
+                "urgencyScore": 8,
+                "effortEstimate": 2
+              }
+            },
+            "delightMetadata": null,
+            "summary": {
+              "actionableInsight": "Prioritize developing a quick-reference guide for employees on beverage recommendations for common health issues.",
+              "replyDraft": "Hi there! I'm sorry to hear you're feeling under the weather. For a quick fix, our Honey Citrus Mint Tea is a great choice for soothing sinuses and congestion. You can also add a bit of honey for extra sweetness. Hope you feel better soon!",
+              "keyQuote": "what teas do you recommend for sinuses and congestion?"
+            },
+            "confidence": 0.85,
+            "reasoning": "The feedback is a clear request for advice on beverage options for health-related issues, indicating a need for support in product knowledge among staff.",
+            "sourceUrl": "https://www.reddit.com/r/starbucks/comments/1q0dy0b/sinuses_congestion_sore_throat_what_do_you/",
+            "sourceId": "1q0dy0b",
+            "originalTitle": "Sinuses, congestion, sore throat , what do you suggest or have used?",
+            "signalScore": 0.5999999999999999,
+            "impactData": {
+              "score": 2.1,
+              "maxScore": 10,
+              "breakdown": {
+                "reach": {
+                  "value": 0,
+                  "weight": 0.4
+                },
+                "sentiment": {
+                  "value": 7,
+                  "weight": 0.3
+                },
+                "velocity": {
+                  "value": 0,
+                  "weight": 0.3
+                }
+              },
+              "rationale": "Score based on standard engagement metrics.",
+              "stakes": {
+                "type": "risk",
+                "message": "Risk if ignored: Continued user frustration, possible support ticket increase."
+              }
+            }
+          }
+        ],
+        "totalScore": 2.1,
+        "quotes": [
+          "what teas do you recommend for sinuses and congestion?"
+        ],
+        "segments": {},
+        "frequency": 1,
+        "avgImpact": 2.1,
+        "topQuote": "\"Why doesn't Starbucks do the same in the USA? Or at least offer it?\"",
+        "affectedSegments": [],
+        "stakes": {
+          "type": "risk",
+          "message": "Risk if ignored: Continued user frustration, possible support ticket increase."
+        },
+        "scoreRationale": "Score based on standard engagement metrics.",
+        "severityLabel": "Medium",
+        "rootCause": "Regional discrepancies in product offerings.",
+        "impactScore": 2.1,
+        "trend": "new",
+        "trendDelta": 0
+      },
+      {
+        "id": "10",
+        "title": "Product Information",
+        "category": "usability_friction",
+        "items": [
+          {
+            "type": "Constructive",
+            "category": "Support Question",
+            "problemMetadata": {
+              "rootCause": "Certainty",
+              "featureArea": "Product Information",
+              "impactType": "Brand Trust",
+              "urgencySignal": "High",
+              "prioritization": {
+                "impactScore": 7,
+                "urgencyScore": 8,
+                "effortEstimate": 2
+              }
+            },
+            "delightMetadata": null,
+            "summary": {
+              "actionableInsight": "Investigate and clarify the shelf life and labeling of bakery items to enhance customer understanding and trust.",
+              "replyDraft": "Thank you for your questions! We appreciate your curiosity about our products. The shelf life of our cheese danishes is designed to ensure freshness, and the 12-31 sticker indicates the sell-by date. If you have any more questions, feel free to ask!",
+              "keyQuote": "Do the danishes really have a shelf life of 2 months?"
+            },
+            "confidence": 0.85,
+            "reasoning": "The feedback expresses confusion about product shelf life and labeling, indicating a need for clearer information. This falls under a Support Question as the user seeks clarification on product details.",
+            "sourceUrl": "https://i.redd.it/oqpwtwlhxgag1.jpeg",
+            "sourceId": "1q03yen",
+            "originalTitle": "Cheese danish shelf life questions",
+            "signalScore": 0.5999999999999999,
+            "impactData": {
+              "score": 2.1,
+              "maxScore": 10,
+              "breakdown": {
+                "reach": {
+                  "value": 0,
+                  "weight": 0.4
+                },
+                "sentiment": {
+                  "value": 7,
+                  "weight": 0.3
+                },
+                "velocity": {
+                  "value": 0,
+                  "weight": 0.3
+                }
+              },
+              "rationale": "Score based on standard engagement metrics.",
+              "stakes": {
+                "type": "risk",
+                "message": "Risk if ignored: Continued user frustration, possible support ticket increase."
+              }
+            }
+          }
+        ],
+        "totalScore": 2.1,
+        "quotes": [
+          "Do the danishes really have a shelf life of 2 months?"
+        ],
+        "segments": {},
+        "frequency": 1,
+        "avgImpact": 2.1,
+        "topQuote": "\"I can’t find any resources on it.\"",
+        "affectedSegments": [],
+        "stakes": {
+          "type": "risk",
+          "message": "Risk if ignored: Continued user frustration, possible support ticket increase."
+        },
+        "scoreRationale": "Score based on standard engagement metrics.",
+        "severityLabel": "Medium",
+        "rootCause": "Insufficient product information available to customers.",
+        "impactScore": 2.1,
+        "trend": "new",
+        "trendDelta": 0
+      }
+    ],
+    "brandStrengths": {
+      "overallScore": 7.5,
+      "topLoves": [
+        {
+          "feature": "Customer Service",
+          "quote": "The baristas have picked up on this negative acceptance to just be toxic to each other",
+          "shareability": 0.8
+        },
+        {
+          "feature": "Product Variety",
+          "quote": "What teas do you recommend for sinuses and congestion?",
+          "shareability": 0.7
+        },
+        {
+          "feature": "Store Ambiance",
+          "quote": "I just want to make it up to her :|",
+          "shareability": 0.6
+        }
+      ],
+      "brandPersonality": [
+        "Reliable",
+        "Innovative",
+        "Welcoming"
+      ]
+    },
+    "suggestedOKRs": [
+      {
+        "theme": "Beverage Quality Improvement",
+        "objective": "Enhance the consistency and quality of beverages across all locations.",
+        "keyResults": [
+          "Reduce beverage quality complaints by 30% by end of Q2.",
+          "Implement a standardized quality check process in all stores by Q2.",
+          "Conduct quarterly training sessions for baristas on beverage preparation."
+        ],
+        "timeframe": "Q2"
+      },
+      {
+        "theme": "Employee Experience Enhancement",
+        "objective": "Improve employee satisfaction and retention through better policies and resources.",
+        "keyResults": [
+          "Revise and communicate employee discount and benefits policies by Q2.",
+          "Launch an updated training platform with new resources by Q2.",
+          "Increase employee satisfaction scores by 20% by end of Q2."
+        ],
+        "timeframe": "Q2"
+      },
+      {
+        "theme": "Operational Efficiency",
+        "objective": "Streamline equipment maintenance and product availability processes.",
+        "keyResults": [
+          "Reduce equipment downtime by 50% by end of Q2.",
+          "Improve product availability metrics by 20% by Q2.",
+          "Implement a new inventory management system by Q2."
+        ],
+        "timeframe": "Q2"
+      }
+    ],
+    "priorityMatrix": [
+      {
+        "title": "Beverage Quality",
+        "category": "usability_friction",
+        "impactScore": 2.1,
+        "effortEstimate": "Medium",
+        "quadrant": "Fill-ins",
+        "frequency": 2
+      },
+      {
+        "title": "Product Availability",
+        "category": "usability_friction",
+        "impactScore": 2.1,
+        "effortEstimate": "Medium",
+        "quadrant": "Fill-ins",
+        "frequency": 1
+      },
+      {
+        "title": "Employee Discount Policy",
+        "category": "usability_friction",
+        "impactScore": 2.1,
+        "effortEstimate": "Medium",
+        "quadrant": "Fill-ins",
+        "frequency": 1
+      },
+      {
+        "title": "Training Platform",
+        "category": "usability_friction",
+        "impactScore": 2.1,
+        "effortEstimate": "Medium",
+        "quadrant": "Fill-ins",
+        "frequency": 1
+      },
+      {
+        "title": "Employee Benefits",
+        "category": "usability_friction",
+        "impactScore": 2.1,
+        "effortEstimate": "Medium",
+        "quadrant": "Fill-ins",
+        "frequency": 1
+      },
+      {
+        "title": "Drink Accessories",
+        "category": "usability_friction",
+        "impactScore": 2.1,
+        "effortEstimate": "Medium",
+        "quadrant": "Fill-ins",
+        "frequency": 1
+      },
+      {
+        "title": "Hiring Process",
+        "category": "usability_friction",
+        "impactScore": 2.1,
+        "effortEstimate": "Medium",
+        "quadrant": "Fill-ins",
+        "frequency": 2
+      },
+      {
+        "title": "Equipment Maintenance",
+        "category": "usability_friction",
+        "impactScore": 2.1,
+        "effortEstimate": "Medium",
+        "quadrant": "Fill-ins",
+        "frequency": 1
+      },
+      {
+        "title": "Beverage Options",
+        "category": "usability_friction",
+        "impactScore": 2.1,
+        "effortEstimate": "Medium",
+        "quadrant": "Fill-ins",
+        "frequency": 1
+      },
+      {
+        "title": "Product Information",
+        "category": "usability_friction",
+        "impactScore": 2.1,
+        "effortEstimate": "Medium",
+        "quadrant": "Fill-ins",
+        "frequency": 1
+      }
+    ],
+    "expectationGaps": [
+      {
+        "expectation": "Consistent beverage taste across locations.",
+        "reality": "Inconsistencies in taste, with some drinks having a chemical/plastic taste.",
+        "gapSeverity": "Medium",
+        "suggestedFix": "Implement a standardized quality check process for beverages."
+      },
+      {
+        "expectation": "Timely equipment maintenance and repair.",
+        "reality": "Delays in fixing broken equipment, affecting operations.",
+        "gapSeverity": "Medium",
+        "suggestedFix": "Enhance maintenance protocols and response times."
+      },
+      {
+        "expectation": "Clear and fair employee policies.",
+        "reality": "Perceived unfairness and lack of clarity in discount and benefits policies.",
+        "gapSeverity": "Medium",
+        "suggestedFix": "Revise and clearly communicate policies to all employees."
+      }
+    ],
+    "metadata": {
+      "totalAnalyzed": 47,
+      "highSignalCount": 21,
+      "noiseFiltered": 26,
+      "dataSources": [
+        "Reddit"
+      ],
+      "analysisDate": "2025-12-31T18:34:29.138Z"
+    },
+    "rawScores": [
+      {
+        "id": "1q0j7je",
+        "impactData": {
+          "score": 2.1,
+          "maxScore": 10,
+          "breakdown": {
+            "reach": {
+              "value": 0,
+              "weight": 0.4
+            },
+            "sentiment": {
+              "value": 7,
+              "weight": 0.3
+            },
+            "velocity": {
+              "value": 0,
+              "weight": 0.3
+            }
+          },
+          "rationale": "Score based on standard engagement metrics.",
+          "stakes": {
+            "type": "risk",
+            "message": "Risk if ignored: Continued user frustration, possible support ticket increase."
+          }
+        }
+      },
+      {
+        "id": "1q0ijxd",
+        "impactData": {
+          "score": 2.1,
+          "maxScore": 10,
+          "breakdown": {
+            "reach": {
+              "value": 0,
+              "weight": 0.4
+            },
+            "sentiment": {
+              "value": 7,
+              "weight": 0.3
+            },
+            "velocity": {
+              "value": 0,
+              "weight": 0.3
+            }
+          },
+          "rationale": "Score based on standard engagement metrics.",
+          "stakes": {
+            "type": "risk",
+            "message": "Risk if ignored: Continued user frustration, possible support ticket increase."
+          }
+        }
+      },
+      {
+        "id": "1q0hyp5",
+        "impactData": {
+          "score": 2.1,
+          "maxScore": 10,
+          "breakdown": {
+            "reach": {
+              "value": 0,
+              "weight": 0.4
+            },
+            "sentiment": {
+              "value": 7,
+              "weight": 0.3
+            },
+            "velocity": {
+              "value": 0,
+              "weight": 0.3
+            }
+          },
+          "rationale": "Score based on standard engagement metrics.",
+          "stakes": {
+            "type": "risk",
+            "message": "Risk if ignored: Continued user frustration, possible support ticket increase."
+          }
+        }
+      },
+      {
+        "id": "1q0htlw",
+        "impactData": {
+          "score": 2.1,
+          "maxScore": 10,
+          "breakdown": {
+            "reach": {
+              "value": 0,
+              "weight": 0.4
+            },
+            "sentiment": {
+              "value": 7,
+              "weight": 0.3
+            },
+            "velocity": {
+              "value": 0,
+              "weight": 0.3
+            }
+          },
+          "rationale": "Score based on standard engagement metrics.",
+          "stakes": {
+            "type": "risk",
+            "message": "Risk if ignored: Continued user frustration, possible support ticket increase."
+          }
+        }
+      },
+      {
+        "id": "1q0hohj",
+        "impactData": {
+          "score": 2.1,
+          "maxScore": 10,
+          "breakdown": {
+            "reach": {
+              "value": 0,
+              "weight": 0.4
+            },
+            "sentiment": {
+              "value": 7,
+              "weight": 0.3
+            },
+            "velocity": {
+              "value": 0,
+              "weight": 0.3
+            }
+          },
+          "rationale": "Score based on standard engagement metrics.",
+          "stakes": {
+            "type": "risk",
+            "message": "Risk if ignored: Continued user frustration, possible support ticket increase."
+          }
+        }
+      },
+      {
+        "id": "1q0hefy",
+        "impactData": {
+          "score": 2.1,
+          "maxScore": 10,
+          "breakdown": {
+            "reach": {
+              "value": 0,
+              "weight": 0.4
+            },
+            "sentiment": {
+              "value": 7,
+              "weight": 0.3
+            },
+            "velocity": {
+              "value": 0,
+              "weight": 0.3
+            }
+          },
+          "rationale": "Score based on standard engagement metrics.",
+          "stakes": {
+            "type": "risk",
+            "message": "Risk if ignored: Continued user frustration, possible support ticket increase."
+          }
+        }
+      },
+      {
+        "id": "1q0gkmn",
+        "impactData": {
+          "score": 2.1,
+          "maxScore": 10,
+          "breakdown": {
+            "reach": {
+              "value": 0,
+              "weight": 0.4
+            },
+            "sentiment": {
+              "value": 7,
+              "weight": 0.3
+            },
+            "velocity": {
+              "value": 0,
+              "weight": 0.3
+            }
+          },
+          "rationale": "Score based on standard engagement metrics.",
+          "stakes": {
+            "type": "risk",
+            "message": "Risk if ignored: Continued user frustration, possible support ticket increase."
+          }
+        }
+      },
+      {
+        "id": "1q0gg3h",
+        "impactData": {
+          "score": 2.1,
+          "maxScore": 10,
+          "breakdown": {
+            "reach": {
+              "value": 0,
+              "weight": 0.4
+            },
+            "sentiment": {
+              "value": 7,
+              "weight": 0.3
+            },
+            "velocity": {
+              "value": 0,
+              "weight": 0.3
+            }
+          },
+          "rationale": "Score based on standard engagement metrics.",
+          "stakes": {
+            "type": "risk",
+            "message": "Risk if ignored: Continued user frustration, possible support ticket increase."
+          }
+        }
+      },
+      {
+        "id": "1q0dy0b",
+        "impactData": {
+          "score": 2.1,
+          "maxScore": 10,
+          "breakdown": {
+            "reach": {
+              "value": 0,
+              "weight": 0.4
+            },
+            "sentiment": {
+              "value": 7,
+              "weight": 0.3
+            },
+            "velocity": {
+              "value": 0,
+              "weight": 0.3
+            }
+          },
+          "rationale": "Score based on standard engagement metrics.",
+          "stakes": {
+            "type": "risk",
+            "message": "Risk if ignored: Continued user frustration, possible support ticket increase."
+          }
+        }
+      },
+      {
+        "id": "1q03yen",
+        "impactData": {
+          "score": 2.1,
+          "maxScore": 10,
+          "breakdown": {
+            "reach": {
+              "value": 0,
+              "weight": 0.4
+            },
+            "sentiment": {
+              "value": 7,
+              "weight": 0.3
+            },
+            "velocity": {
+              "value": 0,
+              "weight": 0.3
+            }
+          },
+          "rationale": "Score based on standard engagement metrics.",
+          "stakes": {
+            "type": "risk",
+            "message": "Risk if ignored: Continued user frustration, possible support ticket increase."
+          }
+        }
+      },
+      {
+        "id": "1q033zz",
+        "impactData": {
+          "score": 2.1,
+          "maxScore": 10,
+          "breakdown": {
+            "reach": {
+              "value": 0,
+              "weight": 0.4
+            },
+            "sentiment": {
+              "value": 7,
+              "weight": 0.3
+            },
+            "velocity": {
+              "value": 0,
+              "weight": 0.3
+            }
+          },
+          "rationale": "Score based on standard engagement metrics.",
+          "stakes": {
+            "type": "risk",
+            "message": "Risk if ignored: Continued user frustration, possible support ticket increase."
+          }
+        }
+      },
+      {
+        "id": "1q033ds",
+        "impactData": {
+          "score": 2.1,
+          "maxScore": 10,
+          "breakdown": {
+            "reach": {
+              "value": 0,
+              "weight": 0.4
+            },
+            "sentiment": {
+              "value": 7,
+              "weight": 0.3
+            },
+            "velocity": {
+              "value": 0,
+              "weight": 0.3
+            }
+          },
+          "rationale": "Score based on standard engagement metrics.",
+          "stakes": {
+            "type": "risk",
+            "message": "Risk if ignored: Continued user frustration, possible support ticket increase."
+          }
+        }
+      },
+      {
+        "id": "1q023ri",
+        "impactData": {
+          "score": 2.1,
+          "maxScore": 10,
+          "breakdown": {
+            "reach": {
+              "value": 0,
+              "weight": 0.4
+            },
+            "sentiment": {
+              "value": 7,
+              "weight": 0.3
+            },
+            "velocity": {
+              "value": 0,
+              "weight": 0.3
+            }
+          },
+          "rationale": "Score based on standard engagement metrics.",
+          "stakes": {
+            "type": "risk",
+            "message": "Risk if ignored: Continued user frustration, possible support ticket increase."
+          }
+        }
+      },
+      {
+        "id": "1q00fmo",
+        "impactData": {
+          "score": 2.1,
+          "maxScore": 10,
+          "breakdown": {
+            "reach": {
+              "value": 0,
+              "weight": 0.4
+            },
+            "sentiment": {
+              "value": 7,
+              "weight": 0.3
+            },
+            "velocity": {
+              "value": 0,
+              "weight": 0.3
+            }
+          },
+          "rationale": "Score based on standard engagement metrics.",
+          "stakes": {
+            "type": "risk",
+            "message": "Risk if ignored: Continued user frustration, possible support ticket increase."
+          }
+        }
+      },
+      {
+        "id": "1q00bzy",
+        "impactData": {
+          "score": 2.1,
+          "maxScore": 10,
+          "breakdown": {
+            "reach": {
+              "value": 0,
+              "weight": 0.4
+            },
+            "sentiment": {
+              "value": 7,
+              "weight": 0.3
+            },
+            "velocity": {
+              "value": 0,
+              "weight": 0.3
+            }
+          },
+          "rationale": "Score based on standard engagement metrics.",
+          "stakes": {
+            "type": "risk",
+            "message": "Risk if ignored: Continued user frustration, possible support ticket increase."
+          }
+        }
+      },
+      {
+        "id": "1pzzag8",
+        "impactData": {
+          "score": 2.1,
+          "maxScore": 10,
+          "breakdown": {
+            "reach": {
+              "value": 0,
+              "weight": 0.4
+            },
+            "sentiment": {
+              "value": 7,
+              "weight": 0.3
+            },
+            "velocity": {
+              "value": 0,
+              "weight": 0.3
+            }
+          },
+          "rationale": "Score based on standard engagement metrics.",
+          "stakes": {
+            "type": "risk",
+            "message": "Risk if ignored: Continued user frustration, possible support ticket increase."
+          }
+        }
+      },
+      {
+        "id": "1pzup9x",
+        "impactData": {
+          "score": 2.1,
+          "maxScore": 10,
+          "breakdown": {
+            "reach": {
+              "value": 0,
+              "weight": 0.4
+            },
+            "sentiment": {
+              "value": 7,
+              "weight": 0.3
+            },
+            "velocity": {
+              "value": 0,
+              "weight": 0.3
+            }
+          },
+          "rationale": "Score based on standard engagement metrics.",
+          "stakes": {
+            "type": "risk",
+            "message": "Risk if ignored: Continued user frustration, possible support ticket increase."
+          }
+        }
+      },
+      {
+        "id": "1pztoms",
+        "impactData": {
+          "score": 2.1,
+          "maxScore": 10,
+          "breakdown": {
+            "reach": {
+              "value": 0,
+              "weight": 0.4
+            },
+            "sentiment": {
+              "value": 7,
+              "weight": 0.3
+            },
+            "velocity": {
+              "value": 0,
+              "weight": 0.3
+            }
+          },
+          "rationale": "Score based on standard engagement metrics.",
+          "stakes": {
+            "type": "risk",
+            "message": "Risk if ignored: Continued user frustration, possible support ticket increase."
+          }
+        }
+      },
+      {
+        "id": "1pzt8sd",
+        "impactData": {
+          "score": 2.1,
+          "maxScore": 10,
+          "breakdown": {
+            "reach": {
+              "value": 0,
+              "weight": 0.4
+            },
+            "sentiment": {
+              "value": 7,
+              "weight": 0.3
+            },
+            "velocity": {
+              "value": 0,
+              "weight": 0.3
+            }
+          },
+          "rationale": "Score based on standard engagement metrics.",
+          "stakes": {
+            "type": "risk",
+            "message": "Risk if ignored: Continued user frustration, possible support ticket increase."
+          }
+        }
+      },
+      {
+        "id": "1pzsh5z",
+        "impactData": {
+          "score": 2.1,
+          "maxScore": 10,
+          "breakdown": {
+            "reach": {
+              "value": 0,
+              "weight": 0.4
+            },
+            "sentiment": {
+              "value": 7,
+              "weight": 0.3
+            },
+            "velocity": {
+              "value": 0,
+              "weight": 0.3
+            }
+          },
+          "rationale": "Score based on standard engagement metrics.",
+          "stakes": {
+            "type": "risk",
+            "message": "Risk if ignored: Continued user frustration, possible support ticket increase."
+          }
+        }
+      },
+      {
+        "id": "1pzqnlq",
+        "impactData": {
+          "score": 2.1,
+          "maxScore": 10,
+          "breakdown": {
+            "reach": {
+              "value": 0,
+              "weight": 0.4
+            },
+            "sentiment": {
+              "value": 7,
+              "weight": 0.3
+            },
+            "velocity": {
+              "value": 0,
+              "weight": 0.3
+            }
+          },
+          "rationale": "Score based on standard engagement metrics.",
+          "stakes": {
+            "type": "risk",
+            "message": "Risk if ignored: Continued user frustration, possible support ticket increase."
+          }
+        }
+      }
+    ]
+  },
+  "metadata": {
+    "totalAnalyzed": 47,
+    "dataSources": [
+      "reddit"
+    ],
+    "subredditsSearched": [],
+    "created_by": "terminal_scout",
+    "version": "2.0"
+  },
+  "lastUpdated": "2025-12-31T18:34:29.138Z",
+  "note": "Auto-generated by scout command. Frontend will load this when ?company matches."
+}
