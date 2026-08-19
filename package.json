@@ -23,7 +23,7 @@
   "author": "jess-tech-lab",
   "license": "ISC",
   "dependencies": {
-    "@langchain/core": "^1.1.8",
+    "@langchain/core": "^1.2.8",
     "@langchain/openai": "^1.5.5",
     "@supabase/supabase-js": "^2.110.1",
     "apify-client": "^2.23.4",
